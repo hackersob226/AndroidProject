@@ -25,8 +25,7 @@ public class LoginActivity extends Activity {
 	 * A dummy authentication store containing known user names and passwords.
 	 * TODO: remove after connecting to a real authentication system.
 	 */
-	private static final String[] DUMMY_CREDENTIALS = new String[] {
-			"admin:pass123" };
+	public static UserList theList = new UserList();
 
 	/**
 	 * The default email to populate the email field with.
@@ -121,10 +120,20 @@ public class LoginActivity extends Activity {
 			mPasswordView.setError(getString(R.string.error_field_required));
 			focusView = mPasswordView;
 			cancel = true;
-		} else if (mPassword.length() < 4) {
-			mPasswordView.setError(getString(R.string.error_invalid_password));
-			focusView = mPasswordView;
-			cancel = true;
+		} else if (mPassword.length() > 0) {
+			for(int n = 0; n < theList.getLength(); n++) {
+				if(mPassword.equals(theList.get(n).getPass())) {
+					n = theList.getLength();
+				} else if (!mPassword.equals(theList.get(n).getPass()) && theList.getLength() == 1) {
+					mPasswordView.setError(getString(R.string.error_incorrect_password));
+					focusView = mPasswordView;
+					cancel = true;
+				} else if(n == theList.getLength() - 1) {
+					mPasswordView.setError(getString(R.string.error_incorrect_password));
+					focusView = mPasswordView;
+					cancel = true;
+				}
+			}
 		}
 
 		// Check for a valid email address.
@@ -132,29 +141,19 @@ public class LoginActivity extends Activity {
 			mEmailView.setError(getString(R.string.error_field_required));
 			focusView = mEmailView;
 			cancel = true;
-		} /*else if (!mEmail.contains("@")) {
-			mEmailView.setError(getString(R.string.error_invalid_email));
-			focusView = mEmailView;
-			cancel = true;
-		}*/
-
-		for (String credential : DUMMY_CREDENTIALS) {
-			String[] pieces = credential.split(":");
-			if (!pieces[0].equals(mEmail)) {
-				// Account exists, return true if the password matches.
-				mEmailView.setError(getString(R.string.error_invalid_email));
-				focusView = mEmailView;
-				cancel = true;
-			}
-		}
-		
-		for (String credential : DUMMY_CREDENTIALS) {
-			String[] pieces = credential.split(":");
-			if (!pieces[1].equals(mPassword)) {
-				// Account exists, return true if the password matches.
-				mPasswordView.setError(getString(R.string.error_incorrect_password));
-				focusView = mPasswordView;
-				cancel = true;
+		} else if (mEmail.length() > 0) {
+			for(int i = 0; i < theList.getLength(); i++){
+				if(mEmail.equals(theList.get(i).getName())){
+					i = theList.getLength();
+				} else if(!mEmail.equals(theList.get(i).getName()) && theList.getLength() == 1) {
+					mEmailView.setError(getString(R.string.error_invalid_email));
+					focusView = mEmailView;
+					cancel = true;
+				}else if(i == theList.getLength() - 1) {
+					mEmailView.setError(getString(R.string.error_invalid_email));
+					focusView = mEmailView;
+					cancel = true;
+				}
 			}
 		}
 		
@@ -229,14 +228,6 @@ public class LoginActivity extends Activity {
 				Thread.sleep(2000);
 			} catch (InterruptedException e) {
 				return false;
-			}
-
-			for (String credential : DUMMY_CREDENTIALS) {
-				String[] pieces = credential.split(":");
-				if (pieces[0].equals(mEmail)) {
-					// Account exists, return true if the password matches.
-					return pieces[1].equals(mPassword);
-				}
 			}
 
 			// TODO: register the new account here.
