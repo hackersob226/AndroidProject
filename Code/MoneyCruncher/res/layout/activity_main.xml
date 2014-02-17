@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/ball_drop"
         android:gravity="center"
-
+        android:onClick="register"
         android:text="@string/button_register" />
 
 </LinearLayout>

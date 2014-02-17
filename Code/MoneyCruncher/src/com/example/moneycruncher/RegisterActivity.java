@@ -2,11 +2,13 @@ package com.example.moneycruncher;
 
 import java.util.ArrayList;
 
+import com.example.memory.User;
+import com.example.memory.UserList;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,14 +20,11 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.memory.User;
-import com.example.memory.UserList;
-
 /**
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class LoginActivity extends Activity {
+public class RegisterActivity extends Activity {
 	/**
 	 * A dummy authentication store containing known user names and passwords.
 	 * TODO: remove after connecting to a real authentication system.
@@ -52,13 +51,12 @@ public class LoginActivity extends Activity {
 	private View mLoginFormView;
 	private View mLoginStatusView;
 	private TextView mLoginStatusMessageView;
-	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.activity_login);
+		setContentView(R.layout.activity_register);
 
 		// Set up the login form.
 		mEmail = getIntent().getStringExtra(EXTRA_EMAIL);
@@ -95,7 +93,7 @@ public class LoginActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.login, menu);
+		getMenuInflater().inflate(R.menu.register, menu);
 		return true;
 	}
 
@@ -125,20 +123,10 @@ public class LoginActivity extends Activity {
 			mPasswordView.setError(getString(R.string.error_field_required));
 			focusView = mPasswordView;
 			cancel = true;
-		} else if (mPassword.length() > 0) {
-			for(int n = 0; n < theList.size(); n++) {
-				if(mPassword.equals(theList.get(n).getPass())) {
-					n = theList.size();
-				} else if (!mPassword.equals(theList.get(n).getPass()) && theList.size() == 1) {
-					mPasswordView.setError(getString(R.string.error_incorrect_password));
-					focusView = mPasswordView;
-					cancel = true;
-				} else if(n == theList.size() - 1) {
-					mPasswordView.setError(getString(R.string.error_incorrect_password));
-					focusView = mPasswordView;
-					cancel = true;
-				}
-			}
+		} else if (mPassword.length() < 4) {
+			mPasswordView.setError(getString(R.string.error_invalid_password));
+			focusView = mPasswordView;
+			cancel = true;
 		}
 
 		// Check for a valid email address.
@@ -147,21 +135,15 @@ public class LoginActivity extends Activity {
 			focusView = mEmailView;
 			cancel = true;
 		} else if (mEmail.length() > 0) {
-			for(int i = 0; i < theList.size(); i++){
-				if(mEmail.equals(theList.get(i).getName())){
-					i = theList.size();
-				} else if(!mEmail.equals(theList.get(i).getName()) && theList.size() == 1) {
-					mEmailView.setError(getString(R.string.error_invalid_email));
-					focusView = mEmailView;
-					cancel = true;
-				}else if(i == theList.size() - 1) {
-					mEmailView.setError(getString(R.string.error_invalid_email));
+			for (int i = 0; i < theList.size(); i++) {
+				if(theList.get(i).getName().equals(mEmail)) {
+					mEmailView.setError(getString(R.string.error_invalid_mamail));
 					focusView = mEmailView;
 					cancel = true;
 				}
 			}
 		}
-		
+
 		if (cancel) {
 			// There was an error; don't attempt login and focus the first
 			// form field with an error.
@@ -169,12 +151,11 @@ public class LoginActivity extends Activity {
 		} else {
 			// Show a progress spinner, and kick off a background task to
 			// perform the user login attempt.
-			mLoginStatusMessageView.setText(R.string.login_progress_signing_in);
+			mLoginStatusMessageView.setText(R.string.login_progress);
 			showProgress(true);
+			theList.add(new User(mEmail, mPassword));
 			mAuthTask = new UserLoginTask();
 			mAuthTask.execute((Void) null);
-			Intent intent = new Intent(this, SuccessActivity.class);
-			startActivity(intent);
 		}
 	}
 

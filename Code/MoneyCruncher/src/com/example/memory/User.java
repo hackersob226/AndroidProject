@@ -1,4 +1,4 @@
-package com.example.moneycruncher;
+package com.example.memory;
 
 public class User {
 	private String name;
