@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="97dp"
+        android:gravity="center"
+        android:text="@string/hello_world"
+        android:textSize="@dimen/font_size" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/ball_drop"
+        android:gravity="center"
+        android:onClick="proceed"
+        android:text="@string/button_login" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/ball_drop"
+        android:gravity="center"
+        android:onClick="register"
+        android:text="@string/button_register" />
+
+</LinearLayout>
