@@ -27,7 +27,6 @@ public class AccountActivity extends Activity {
 		// LISTVIEW
 		listView = (ListView) findViewById(R.id.list);
 		String[] strList = new String[theList.size()];
-		strList[0] = new LoginActivity().getCurrentUser();
 		for (int i=0; i<=theList.size();i++) {
 			strList[i] = theList.get(i).getName();
 		}
