@@ -23,10 +23,17 @@ public class AccountActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_account);
 		
-		listView = (ListView) findViewById(R.id.list);
-		// IS WRONG OK FIX
-		ArrayAdapter<ArrayList<User>> adapter = new ArrayAdapter<ArrayList<User>>(this,android.R.layout.simple_list_item_1, android.R.id.text1, theList);
 		
+		// LISTVIEW
+		listView = (ListView) findViewById(R.id.list);
+		String[] strList = new String[theList.size()];
+		strList[0] = new LoginActivity().getCurrentUser();
+		for (int i=0; i<=theList.size();i++) {
+			strList[i] = theList.get(i).getName();
+		}
+		// ADAPTER
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, strList);
+		listView.setAdapter(adapter);
 		
 	}
 
@@ -38,3 +45,7 @@ public class AccountActivity extends Activity {
 	}
 
 }
+/*
+ * 
+ */
+

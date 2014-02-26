@@ -173,7 +173,6 @@ public class LoginActivity extends Activity {
 			showProgress(true);
 			mAuthTask = new UserLoginTask();
 			mAuthTask.execute((Void) null);
-			
 			Intent intent = new Intent(this, AccountActivity.class);
 			startActivity(intent);
 		}
@@ -259,5 +258,9 @@ public class LoginActivity extends Activity {
 			mAuthTask = null;
 			showProgress(false);
 		}
+	}
+	
+	public String getCurrentUser() {
+		return currentUser;
 	}
 }
