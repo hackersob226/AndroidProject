@@ -6,10 +6,6 @@ public class Account {
 	private double balance;
 	private double monthlyInterestRate;
 	
-	public Account() {
-		
-	}
-	
 	public Account(String fullName, String displayName, double balance, double monthlyInterestRate) {
 		this.fullName = fullName;
 		this.displayName = displayName;
@@ -33,8 +29,9 @@ public class Account {
 		return monthlyInterestRate;
 	}
 	
+	@Override
 	public String toString() {
-		return null;
+		return fullName+", "+displayName+", "+balance+", "+monthlyInterestRate;
 	}
 
 }
