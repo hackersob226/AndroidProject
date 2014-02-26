@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.CS2340.moneycuncher"
+    package="com.example.moneycruncher"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.CS2340.moneycuncher.MainActivity"
+            android:name="com.example.moneycruncher.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,13 +23,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.CS2340.moneycuncher.LoginActivity"
+            android:name="com.example.moneycruncher.LoginActivity"
             android:label="@string/title_activity_login"
             android:windowSoftInputMode="adjustResize|stateVisible" >
         </activity>
         <activity
-            android:name="com.CS2340.moneycuncher.SuccessActivity"
+            android:name="com.example.moneycruncher.SuccessActivity"
             android:label="@string/title_activity_success" >
+        </activity>
+        <activity
+            android:name="com.example.moneycruncher.RegisterActivity"
+            android:label="@string/title_activity_register"
+            android:windowSoftInputMode="adjustResize|stateVisible" >
+        </activity>
+        <activity
+            android:name="com.example.moneycruncher.AccountActivity"
+            android:label="@string/title_activity_account" >
         </activity>
     </application>
 
