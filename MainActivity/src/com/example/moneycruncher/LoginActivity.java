@@ -259,8 +259,4 @@ public class LoginActivity extends Activity {
 			showProgress(false);
 		}
 	}
-	
-	public String getCurrentUser() {
-		return currentUser;
-	}
 }
