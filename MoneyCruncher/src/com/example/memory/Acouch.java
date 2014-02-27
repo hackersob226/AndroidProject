@@ -1,12 +1,12 @@
 package com.example.memory;
 
-public class Account {
+public class Acouch {
 	private String fullName;
 	private String displayName;
 	private double balance;
 	private double monthlyInterestRate;
 	
-	public Account(String fullName, String displayName, double balance, double monthlyInterestRate) {
+	public Acouch(String fullName, String displayName, double balance, double monthlyInterestRate) {
 		this.fullName = fullName;
 		this.displayName = displayName;
 		this.balance = balance;

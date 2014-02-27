@@ -9,5 +9,11 @@
     <string name="button_register">Register</string>
     <string name="title_activity_success">SuccessActivity</string>
     <string name="title_activity_account">AccountActivity</string>
+    <string name="create_account">Create Account</string>
+    <string name="title_activity_create_account">CreateAccountActivity</string>
+    <string name="prompt_fullname">Full Name</string>
+    <string name="prompt_displayname">Display Name</string>
+    <string name="prompt_balance">Balance</string>
+    <string name="prompt_interest">Interest</string>
 
 </resources>

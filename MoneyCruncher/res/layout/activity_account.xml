@@ -8,12 +8,16 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".AccountActivity" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
 
+
+        <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/ball_drop"
+        android:gravity="bottom"
+        android:onClick="create"
+        android:text="@string/create_account" />
+        
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"
