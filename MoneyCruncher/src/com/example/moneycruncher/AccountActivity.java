@@ -39,7 +39,7 @@ public class AccountActivity extends Activity {
 				blah = theList.get(n);
 			}
 		}
-		String [] strList =  new String[5];
+		String [] strList =  new String[accList.size()];
 		if (accList.size() > 0) {
 			for (int i = 0; i < accList.size(); i++) {
 				strList[i] = accList.get(i).getDisplayName();
