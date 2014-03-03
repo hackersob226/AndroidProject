@@ -23,7 +23,8 @@ public final class R {
         public static final int font_size=0x7f040002;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int bg=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
         public static final int action_forgot_password=0x7f08000e;
@@ -61,26 +62,27 @@ public final class R {
     }
     public static final class string {
         public static final int action_forgot_password=0x7f050013;
-        public static final int action_register=0x7f05001d;
+        public static final int action_register=0x7f05001e;
         public static final int action_settings=0x7f050001;
-        public static final int action_short=0x7f05001e;
+        public static final int action_short=0x7f05001f;
         public static final int action_sign_in_register=0x7f050011;
         public static final int action_sign_in_short=0x7f050012;
         public static final int app_name=0x7f050000;
         /**  Strings related to login 
          */
-        public static final int ask_email=0x7f05001b;
-        public static final int ask_password=0x7f05001c;
+        public static final int ask_email=0x7f05001c;
+        public static final int ask_password=0x7f05001d;
         public static final int button_login=0x7f050004;
         public static final int button_register=0x7f050005;
         public static final int create_account=0x7f050008;
         public static final int error_field_required=0x7f050019;
         public static final int error_incorrect_password=0x7f050018;
         public static final int error_invalid_email=0x7f050015;
+        public static final int error_invalid_input=0x7f05001a;
         public static final int error_invalid_mamail=0x7f050016;
         public static final int error_invalid_password=0x7f050017;
         public static final int hello_world=0x7f050002;
-        public static final int login_progress=0x7f05001f;
+        public static final int login_progress=0x7f050020;
         public static final int login_progress_signing_in=0x7f050014;
         public static final int prompt_balance=0x7f05000c;
         public static final int prompt_displayname=0x7f05000b;
@@ -94,7 +96,7 @@ public final class R {
         public static final int title_activity_account=0x7f050007;
         public static final int title_activity_create_account=0x7f050009;
         public static final int title_activity_login=0x7f05000e;
-        public static final int title_activity_register=0x7f05001a;
+        public static final int title_activity_register=0x7f05001b;
         public static final int title_activity_success=0x7f050006;
     }
     public static final class style {

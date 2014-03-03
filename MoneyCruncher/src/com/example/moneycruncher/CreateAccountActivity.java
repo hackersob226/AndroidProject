@@ -10,16 +10,20 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 
-import com.example.memory.Acouch;
+import com.example.memory.IList;
+import com.example.memory.Singleton;
+import com.example.memory.Tab;
 import com.example.memory.User;
 import com.example.memory.UserList;
+import com.example.presenter.CreateAccountPresenter;
 
-public class CreateAccountActivity extends Activity {
+public class CreateAccountActivity extends Activity implements ICreateAccountActivity{
 	private String displayName;
 	private String fullName;
 	private String balance;
 	private String interest;
 	private String user;
+	private CreateAccountPresenter myPresenter;
 
 	// UI references.
 	private EditText mdisplayName;
@@ -33,6 +37,9 @@ public class CreateAccountActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_create_account);
 		
+		IList theList = Singleton.getInstance().getList();
+		myPresenter = new CreateAccountPresenter(this, theList);
+		
 		mdisplayName = (EditText) findViewById(R.id.editText1);
 		mdisplayName.setText(displayName);
 		
@@ -45,8 +52,9 @@ public class CreateAccountActivity extends Activity {
 		minterest = (EditText) findViewById(R.id.editText4);
 		minterest.setText(interest);
 		
-		user = getIntent().getStringExtra(AccountActivity.bleh);		
+		user = getIntent().getStringExtra(AccountActivity.user);		
 	}
+
 	public boolean attemptCreate(){	
 		View focusView = null;
 		mfullName.setError(null);
@@ -59,25 +67,25 @@ public class CreateAccountActivity extends Activity {
 		balance = mbalance.getText().toString();
 		interest = minterest.getText().toString();
 		
-		if (displayName.length()==0) {
+		if (TextUtils.isEmpty(displayName)) {
 			mdisplayName.setError(getString(R.string.error_field_required));
 			focusView = mdisplayName;
 			cancel = true;
 		} 
 		
-		if (fullName.length() == 0) {
+		if (TextUtils.isEmpty(fullName)) {
 			mfullName.setError(getString(R.string.error_field_required));
 			focusView = mfullName;
 			cancel = true;
 		} 
 		
-		if (balance.length()==0) {
+		if (TextUtils.isEmpty(balance)) {
 			mbalance.setError(getString(R.string.error_field_required));
 			focusView = mbalance;
 			cancel = true;
-		} 
+		}
 		
-		if (interest.length() == 0) {
+		if (TextUtils.isEmpty(interest)) {
 			minterest.setError(getString(R.string.error_field_required));
 			focusView = minterest;
 			cancel = true;
@@ -86,13 +94,7 @@ public class CreateAccountActivity extends Activity {
 		if (cancel) {
 			focusView.requestFocus();
 		} else {
-			ArrayList<User> theList = UserList.getList();
-			for(int i = 0; i < theList.size(); i++) {
-					if(theList.get(i).getName().equals(user)){
-						theList.get(i).addAccount(new Acouch(fullName,displayName,
-									Double.parseDouble(balance), Double.parseDouble(interest)));
-					}
-			}
+			myPresenter.createAccount(user, fullName, displayName, balance, interest);
 			return true;
 		}
 		return false;
@@ -101,8 +103,9 @@ public class CreateAccountActivity extends Activity {
 	public void goBack(View view) {
 		boolean x = attemptCreate();
 		if (x) {
-		Intent intent = new Intent(this, AccountActivity.class);
-		startActivity(intent);
+		    Intent intent = new Intent(this, AccountActivity.class);
+	        intent.putExtra("Uniqid", "From_Create_Account_Activity");
+		    startActivity(intent);
 		}
 	}
 

@@ -2,26 +2,30 @@ package com.example.memory;
 
 import java.util.ArrayList;
 
-public class UserList {
+public class UserList implements IList{
 	private static ArrayList<User> myList = new ArrayList<User>();
 	
-	public static void add(User n) {
+	static {
+	    myList.add(new User("admin", "pass123"));
+	}
+	
+	public void add(User n) {
 		myList.add(n);
 	}
 	
-	public static User getUser(int n) {
+	public User getUser(int n) {
 		return myList.get(n);
 	}
 	
-	public static boolean contains(User n){
+	public boolean contains(User n){
 		return myList.contains(n);
 	}
 	
-	public static int getLength() {
+	public int getLength() {
 		return myList.size();
 	}
 	
-	public static ArrayList<User> getList(){
+	public ArrayList<User> getList(){
 		return myList;
 	}
 

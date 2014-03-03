@@ -1,15 +1,10 @@
 package com.example.moneycruncher;
 
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-
-import com.example.memory.User;
-import com.example.memory.UserList;
 
 public class MainActivity extends Activity {
 
@@ -17,10 +12,6 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		ArrayList<User> theList = UserList.getList();
-		if(theList.isEmpty()) {
-			theList.add(new User("admin","pass123"));
-		}
 	}
 
 	@Override

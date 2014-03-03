@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public class User {
 	private String name;
 	private String pass;
-	private ArrayList<Acouch> accList;
+	private ArrayList<Tab> accList;
 	
 	public User(String n, String p) {
 		name = n;
 		pass = p;
-		accList = new ArrayList<Acouch>();
+		accList = new ArrayList<Tab>();
 	}
 	
 	public String getName() {
@@ -21,11 +21,11 @@ public class User {
 		return pass;
 	}
 	
-	public ArrayList<Acouch> getAccList() {
+	public ArrayList<Tab> getAccList() {
 		return accList;
 	}
 	
-	public void addAccount(Acouch acc) {
+	public void addAccount(Tab acc) {
 		accList.add(acc);
 	}
 	

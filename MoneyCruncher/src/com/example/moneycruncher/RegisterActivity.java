@@ -1,10 +1,5 @@
 package com.example.moneycruncher;
 
-import java.util.ArrayList;
-
-import com.example.memory.User;
-import com.example.memory.UserList;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
@@ -20,16 +15,20 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.memory.IList;
+import com.example.memory.Singleton;
+import com.example.presenter.RegisterPresenter;
+
 /**
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class RegisterActivity extends Activity {
+public class RegisterActivity extends Activity implements IRegisterActivity{
 	/**
 	 * A dummy authentication store containing known user names and passwords.
 	 * TODO: remove after connecting to a real authentication system.
 	 */
-	public ArrayList<User> theList = UserList.getList();
+	private RegisterPresenter myPresenter;
 
 	/**
 	 * The default email to populate the email field with.
@@ -57,6 +56,9 @@ public class RegisterActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_register);
+		
+	    IList theList = Singleton.getInstance().getList();
+	    myPresenter = new RegisterPresenter(this, theList);
 
 		// Set up the login form.
 		mEmail = getIntent().getStringExtra(EXTRA_EMAIL);
@@ -135,13 +137,11 @@ public class RegisterActivity extends Activity {
 			focusView = mEmailView;
 			cancel = true;
 		} else if (mEmail.length() > 0) {
-			for (int i = 0; i < theList.size(); i++) {
-				if(theList.get(i).getName().equals(mEmail)) {
-					mEmailView.setError(getString(R.string.error_invalid_mamail));
-					focusView = mEmailView;
-					cancel = true;
-				}
-			}
+		    if(myPresenter.checkUser(mEmail)) {
+                mEmailView.setError(getString(R.string.error_invalid_mamail));
+                focusView = mEmailView;
+                cancel = true;
+		    }
 		}
 
 		if (cancel) {
@@ -153,7 +153,9 @@ public class RegisterActivity extends Activity {
 			// perform the user login attempt.
 			mLoginStatusMessageView.setText(R.string.login_progress);
 			showProgress(true);
-			theList.add(new User(mEmail, mPassword));
+
+			myPresenter.registerUser(mEmail,mPassword);
+			
 			mAuthTask = new UserLoginTask();
 			mAuthTask.execute((Void) null);
 		}

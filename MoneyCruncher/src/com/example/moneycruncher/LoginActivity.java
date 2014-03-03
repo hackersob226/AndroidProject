@@ -1,7 +1,5 @@
 package com.example.moneycruncher;
 
-import java.util.ArrayList;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
@@ -18,20 +16,20 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.memory.User;
-import com.example.memory.UserList;
+import com.example.memory.IList;
+import com.example.memory.Singleton;
+import com.example.presenter.LoginPresenter;
 
 /**
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class LoginActivity extends Activity {
+public class LoginActivity extends Activity implements ILoginActivity{
 	/**
 	 * A dummy authentication store containing known user names and passwords.
 	 * TODO: remove after connecting to a real authentication system.
 	 */
-	public ArrayList<User> theList = UserList.getList();
-
+    private LoginPresenter myPresenter;
 	/**
 	 * The default email to populate the email field with.
 	 */
@@ -59,6 +57,9 @@ public class LoginActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_login);
+		
+		IList theList = Singleton.getInstance().getList();
+		myPresenter = new LoginPresenter(this, theList);
 
 		// Set up the login form.
 		mEmail = getIntent().getStringExtra(EXTRA_EMAIL);
@@ -126,19 +127,11 @@ public class LoginActivity extends Activity {
 			focusView = mPasswordView;
 			cancel = true;
 		} else if (mPassword.length() > 0) {
-			for(int n = 0; n < theList.size(); n++) {
-				if(mPassword.equals(theList.get(n).getPass())) {
-					n = theList.size();
-				} else if (!mPassword.equals(theList.get(n).getPass()) && theList.size() == 1) {
-					mPasswordView.setError(getString(R.string.error_incorrect_password));
-					focusView = mPasswordView;
-					cancel = true;
-				} else if(n == theList.size() - 1) {
-					mPasswordView.setError(getString(R.string.error_incorrect_password));
-					focusView = mPasswordView;
-					cancel = true;
-				}
-			}
+		    if (myPresenter.checkPassword(mPassword)) {
+	            mPasswordView.setError(getString(R.string.error_incorrect_password));
+	            focusView = mPasswordView;
+	            cancel = true;
+		    }
 		}
 
 		// Check for a valid email address.
@@ -147,18 +140,10 @@ public class LoginActivity extends Activity {
 			focusView = mEmailView;
 			cancel = true;
 		} else if (mEmail.length() > 0) {
-			for(int i = 0; i < theList.size(); i++){
-				if(mEmail.equals(theList.get(i).getName())){
-					i = theList.size();
-				} else if(!mEmail.equals(theList.get(i).getName()) && theList.size() == 1) {
-					mEmailView.setError(getString(R.string.error_invalid_email));
-					focusView = mEmailView;
-					cancel = true;
-				}else if(i == theList.size() - 1) {
-					mEmailView.setError(getString(R.string.error_invalid_email));
-					focusView = mEmailView;
-					cancel = true;
-				}
+		    if(myPresenter.checkUser(mEmail)) {
+	            mEmailView.setError(getString(R.string.error_invalid_email));
+	            focusView = mEmailView;
+	            cancel = true;
 			}
 		}
 		
@@ -173,7 +158,9 @@ public class LoginActivity extends Activity {
 			showProgress(true);
 			mAuthTask = new UserLoginTask();
 			mAuthTask.execute((Void) null);
+
 			Intent intent = new Intent(this, AccountActivity.class);
+			intent.putExtra("Uniqid", "From_Login_Activity");
 			intent.putExtra(user, mEmail);
 			startActivity(intent);
 		}
