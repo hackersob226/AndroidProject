@@ -25,10 +25,7 @@ import com.example.presenter.LoginPresenter;
  * well.
  */
 public class LoginActivity extends Activity implements ILoginActivity{
-	/**
-	 * A dummy authentication store containing known user names and passwords.
-	 * TODO: remove after connecting to a real authentication system.
-	 */
+
     private LoginPresenter myPresenter;
 	/**
 	 * The default email to populate the email field with.
@@ -44,7 +41,7 @@ public class LoginActivity extends Activity implements ILoginActivity{
 	private String mEmail;
 	private String mPassword;
 
-	// UI references.
+	// UI references. Email = Username, since by default the template wanted Emails
 	private EditText mEmailView;
 	private EditText mPasswordView;
 	private View mLoginFormView;

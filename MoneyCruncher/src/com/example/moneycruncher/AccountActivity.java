@@ -19,7 +19,7 @@ import com.example.presenter.AccountListingPresenter;
 
 public class AccountActivity extends Activity implements IAccountActivity{
 	ListView listView;
-	public User theUser;
+	User theUser;
 	public static String user;
 	public static String username;
 	private AccountListingPresenter myPresenter;
@@ -30,7 +30,6 @@ public class AccountActivity extends Activity implements IAccountActivity{
 		setContentView(R.layout.activity_account);
 		
 	    IList theList = Singleton.getInstance().getList();
-	    //Don't really have any use for the Presenter just yet...
 	    myPresenter = new AccountListingPresenter(this, theList);
 
 		String origin = getIntent().getExtras().getString("Uniqid");
@@ -41,19 +40,10 @@ public class AccountActivity extends Activity implements IAccountActivity{
 		listView = (ListView) findViewById(R.id.list);
 
 		ArrayList<Tab> accList = new ArrayList<Tab>();
-		for (int n = 0; n < theList.getLength(); n++) {
-			if (username.equals(theList.getUser(n).getName())){
-				accList = theList.getUser(n).getAccList();
-				theUser = theList.getUser(n);
-			}
-		}
+		theUser = myPresenter.findUser(theList, username);
+        accList = theUser.getAccList();
 
-		String [] strList =  new String[accList.size()];
-		if (accList.size() > 0) {
-			for (int i = 0; i < accList.size(); i++) {
-				strList[i] = accList.get(i).getDisplayName();
-			}
-		}
+		String [] strList =  myPresenter.fillStringList(accList);
 		
 		displayAccounts(strList);
 

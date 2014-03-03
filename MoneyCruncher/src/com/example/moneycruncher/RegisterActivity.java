@@ -24,10 +24,7 @@ import com.example.presenter.RegisterPresenter;
  * well.
  */
 public class RegisterActivity extends Activity implements IRegisterActivity{
-	/**
-	 * A dummy authentication store containing known user names and passwords.
-	 * TODO: remove after connecting to a real authentication system.
-	 */
+
 	private RegisterPresenter myPresenter;
 
 	/**
