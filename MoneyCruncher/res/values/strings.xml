@@ -17,6 +17,7 @@
     <string name="title_activity_display_account">DisplayAccountActivity</string>
     <string name="balance">Balance:</string>
     <string name="interest">Interest:</string>
-    <string name="make_transaction">Make a Transaction</string>
+    <string name="deposit">Deposit</string>
+    <string name="withdrawal">Withdraw</string>
 
 </resources>
