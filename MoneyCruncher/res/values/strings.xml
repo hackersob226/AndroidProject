@@ -7,13 +7,16 @@
     <string name="success">Success</string>
     <string name="button_login">Login</string>
     <string name="button_register">Register</string>
-    <string name="title_activity_success">SuccessActivity</string>
-    <string name="title_activity_account">AccountActivity</string>
+    <string name="title_activity_account">Your Accounts</string>
     <string name="create_account">Create Account</string>
-    <string name="title_activity_create_account">CreateAccountActivity</string>
+    <string name="title_activity_create_account">Create a New Account</string>
     <string name="prompt_fullname">Full Name</string>
     <string name="prompt_displayname">Display Name</string>
     <string name="prompt_balance">Balance</string>
     <string name="prompt_interest">Interest</string>
+    <string name="title_activity_display_account">DisplayAccountActivity</string>
+    <string name="balance">Balance:</string>
+    <string name="interest">Interest:</string>
+    <string name="make_transaction">Make a Transaction</string>
 
 </resources>

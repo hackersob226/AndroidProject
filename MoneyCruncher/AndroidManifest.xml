@@ -28,10 +28,6 @@
             android:windowSoftInputMode="adjustResize|stateVisible" >
         </activity>
         <activity
-            android:name="com.example.moneycruncher.SuccessActivity"
-            android:label="@string/title_activity_success" >
-        </activity>
-        <activity
             android:name="com.example.moneycruncher.RegisterActivity"
             android:label="@string/title_activity_register"
             android:windowSoftInputMode="adjustResize|stateVisible" >
@@ -43,6 +39,10 @@
         <activity
             android:name="com.example.moneycruncher.CreateAccountActivity"
             android:label="@string/title_activity_create_account" >
+        </activity>
+        <activity
+            android:name="com.example.moneycruncher.DisplayAccountActivity"
+            android:label="@string/title_activity_display_account" >
         </activity>
     </application>
 

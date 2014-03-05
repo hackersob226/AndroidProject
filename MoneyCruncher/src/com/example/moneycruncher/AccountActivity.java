@@ -8,8 +8,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.memory.IList;
 import com.example.memory.Singleton;
@@ -21,6 +24,7 @@ public class AccountActivity extends Activity implements IAccountActivity{
 	ListView listView;
 	User theUser;
 	public static String user;
+	public static String account;
 	public static String username;
 	private AccountListingPresenter myPresenter;
 
@@ -44,17 +48,28 @@ public class AccountActivity extends Activity implements IAccountActivity{
         accList = theUser.getAccList();
 
 		String [] strList =  myPresenter.fillStringList(accList);
-		
-		displayAccounts(strList);
 
-		/*
-		// Lists the Users.
-		// LISTVIEW
-		listView = (ListView) findViewById(R.id.list);
-		String[] strList = new String[theList.size()];
-		for (int i=0; i<theList.size();i++) {
-			strList[i] = theList.get(i).getName();
-		}*/
+		displayAccounts(strList);  
+		listView.setClickable(true);
+        listView.setOnItemClickListener(
+                new OnItemClickListener()
+                {
+                    @Override
+                    public void onItemClick(AdapterView<?> arg0, View view,
+                            int position, long id) {
+                            Intent intent = new Intent(AccountActivity.this, DisplayAccountActivity.class);
+                            String tempAccount = (String)listView.getItemAtPosition(position);
+
+                            Bundle extras = new Bundle();
+                            extras.putString("Uniqid", "From_Account_Activity");
+                            extras.putString("USERNAME",username);
+                            extras.putString("ACCOUNT",tempAccount);
+                            intent.putExtras(extras);
+
+                            startActivity(intent);
+                         }
+                    }
+             );
 	}
 	
 	public void displayAccounts(String[] strList) {
@@ -65,7 +80,7 @@ public class AccountActivity extends Activity implements IAccountActivity{
 	
 	public void create(View view) {
 		Intent intent = new Intent(this, CreateAccountActivity.class);
-		intent.putExtra(user, theUser.getName());
+		intent.putExtra(user, username);
 		startActivity(intent);
 	}
 
