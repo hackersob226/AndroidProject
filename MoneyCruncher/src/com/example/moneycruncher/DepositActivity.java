@@ -25,7 +25,7 @@ public class DepositActivity extends Activity implements IDepositActivity{
 
     private EditText msource;
     private EditText mamount;
-    private boolean cancel = false;
+    private boolean cancel;
     private DatePicker datePicker;
 
     @Override
@@ -56,6 +56,8 @@ public class DepositActivity extends Activity implements IDepositActivity{
         View focusView = null;
         msource.setError(null);
         mamount.setError(null);
+        
+        cancel = false;
         
         source = msource.getText().toString();
         amount = mamount.getText().toString();

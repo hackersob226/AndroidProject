@@ -25,7 +25,7 @@ public class WithdrawActivity extends Activity implements IWithdrawActivity {
 
     private EditText mreason;
     private EditText mamount;
-    private boolean cancel = false;
+    private boolean cancel;
     private DatePicker datePicker;
 
     @Override
@@ -56,6 +56,8 @@ public class WithdrawActivity extends Activity implements IWithdrawActivity {
         View focusView = null;
         mreason.setError(null);
         mamount.setError(null);
+
+        cancel = false;
         
         reason = mreason.getText().toString();
         amount = mamount.getText().toString();

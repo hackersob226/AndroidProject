@@ -30,7 +30,7 @@ public class CreateAccountActivity extends Activity implements ICreateAccountAct
 	private EditText mfullName;
 	private EditText mbalance;
 	private EditText minterest;
-	private boolean cancel = false;
+	private boolean cancel;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +61,8 @@ public class CreateAccountActivity extends Activity implements ICreateAccountAct
 		mdisplayName.setError(null);
 		mbalance.setError(null);
 		minterest.setError(null);
+
+		cancel = false;
 		
 		fullName = mfullName.getText().toString();
 		displayName = mdisplayName.getText().toString();
