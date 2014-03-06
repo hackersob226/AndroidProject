@@ -44,6 +44,14 @@
             android:name="com.example.moneycruncher.DisplayAccountActivity"
             android:label="@string/title_activity_display_account" >
         </activity>
+        <activity
+            android:name="com.example.moneycruncher.DepositActivity"
+            android:label="@string/title_activity_deposit" >
+        </activity>
+        <activity
+            android:name="com.example.moneycruncher.WithdrawActivity"
+            android:label="@string/title_activity_withdraw" >
+        </activity>
     </application>
 
 </manifest>

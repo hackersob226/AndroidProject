@@ -1,8 +1,10 @@
 package com.example.moneycruncher;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.memory.IList;
@@ -55,6 +57,24 @@ public class DisplayAccountActivity extends Activity implements IDisplayAccountA
         
         minterest = (TextView) findViewById(R.id.tempView4);
         minterest.setText(interest);
+    }
+
+    public void deposit(View view) {
+        Intent intent = new Intent(this, DepositActivity.class);
+        Bundle extras = new Bundle();
+        extras.putString("USERNAME",username);
+        extras.putString("ACCOUNT",account);
+        intent.putExtras(extras);
+        startActivity(intent);
+    }
+
+    public void withdraw(View view) {
+        Intent intent = new Intent(this, WithdrawActivity.class);
+        Bundle extras = new Bundle();
+        extras.putString("USERNAME",username);
+        extras.putString("ACCOUNT",account);
+        intent.putExtras(extras);
+        startActivity(intent);
     }
 
     @Override
