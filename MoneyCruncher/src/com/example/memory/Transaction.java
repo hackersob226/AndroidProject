@@ -33,6 +33,6 @@ public abstract class Transaction {
 	
 	@Override
 	public String toString() {
-		return name+", "+date.toString+", "+entryDate.stoString+", "+amount;
+		return name+", "+date.toString()+", "+entryDate.toString()+", "+amount;
 	}
 }
