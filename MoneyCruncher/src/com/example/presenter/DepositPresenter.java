@@ -16,14 +16,8 @@ public class DepositPresenter extends Presenter{
         myList = list;
     }
 
-    public void deposit(String name, String date, String amount, Tab account){
-        int x,y,z;
-        String[] dateNumbers = new String[3];
-        dateNumbers = date.split("/");
-        x = Integer.parseInt(dateNumbers[0]);
-        y = Integer.parseInt(dateNumbers[1]);
-        z = Integer.parseInt(dateNumbers[2]);
+    public void deposit(String name, int y, int m, int d, String amount, Tab account){
         double money = Double.parseDouble(amount);
-        account.update(new Deposit(name, x, y, z, money));
+        account.update(new Deposit(name, y, m , d, money));
     }
 }

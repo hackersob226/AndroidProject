@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.example.memory.IList;
@@ -20,13 +21,12 @@ public class DepositActivity extends Activity implements IDepositActivity{
     
     private DepositPresenter myPresenter;
     private String source;
-    private String date;
     private String amount;
 
     private EditText msource;
-    private EditText mdate;
     private EditText mamount;
     private boolean cancel = false;
+    private DatePicker datePicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,22 +45,19 @@ public class DepositActivity extends Activity implements IDepositActivity{
         msource = (EditText) findViewById(R.id.editText1);
         msource.setText(source);
         
-        mdate = (EditText) findViewById(R.id.editText2);
-        mdate.setText(date);
-        
         mamount = (EditText) findViewById(R.id.editText3);
         mamount.setText(amount);
+
+        datePicker = (DatePicker) findViewById(R.id.datePicker1);
     }
 
 
     public boolean attemptCreate(){ 
         View focusView = null;
         msource.setError(null);
-        mdate.setError(null);
         mamount.setError(null);
         
         source = msource.getText().toString();
-        date = mdate.getText().toString();
         amount = mamount.getText().toString();
         
         if (TextUtils.isEmpty(source)) {
@@ -68,12 +65,10 @@ public class DepositActivity extends Activity implements IDepositActivity{
             focusView = msource;
             cancel = true;
         } 
-        
-        if (TextUtils.isEmpty(date)) {
-            mdate.setError(getString(R.string.error_field_required));
-            focusView = mdate;
-            cancel = true;
-        } 
+
+        int   day  = datePicker.getDayOfMonth();
+        int   month= datePicker.getMonth() + 1;
+        int   year = datePicker.getYear();
         
         if (TextUtils.isEmpty(amount)) {
             mamount.setError(getString(R.string.error_field_required));
@@ -84,7 +79,7 @@ public class DepositActivity extends Activity implements IDepositActivity{
         if (cancel) {
             focusView.requestFocus();
         } else {
-            myPresenter.deposit(source, date, amount, currentAccount);
+            myPresenter.deposit(source, year, month, day, amount, currentAccount);
             return true;
         }
         return false;

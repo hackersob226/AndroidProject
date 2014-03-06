@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.example.memory.IList;
@@ -20,13 +21,12 @@ public class WithdrawActivity extends Activity implements IWithdrawActivity {
     
     private WithdrawPresenter myPresenter;
     private String reason;
-    private String date;
     private String amount;
 
     private EditText mreason;
-    private EditText mdate;
     private EditText mamount;
     private boolean cancel = false;
+    private DatePicker datePicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,22 +44,20 @@ public class WithdrawActivity extends Activity implements IWithdrawActivity {
 
         mreason = (EditText) findViewById(R.id.editText1);
         mreason.setText(reason);
-        
-        mdate = (EditText) findViewById(R.id.editText2);
-        mdate.setText(date);
-        
+
         mamount = (EditText) findViewById(R.id.editText3);
         mamount.setText(amount);
+
+        datePicker = (DatePicker) findViewById(R.id.datePicker1);
+
     }
 
     public boolean attemptCreate(){ 
         View focusView = null;
         mreason.setError(null);
-        mdate.setError(null);
         mamount.setError(null);
         
         reason = mreason.getText().toString();
-        date = mdate.getText().toString();
         amount = mamount.getText().toString();
         
         if (TextUtils.isEmpty(reason)) {
@@ -67,12 +65,10 @@ public class WithdrawActivity extends Activity implements IWithdrawActivity {
             focusView = mreason;
             cancel = true;
         } 
-        
-        if (TextUtils.isEmpty(date)) {
-            mdate.setError(getString(R.string.error_field_required));
-            focusView = mdate;
-            cancel = true;
-        } 
+
+        int   day  = datePicker.getDayOfMonth();
+        int   month= datePicker.getMonth() + 1;
+        int   year = datePicker.getYear();
         
         if (TextUtils.isEmpty(amount)) {
             mamount.setError(getString(R.string.error_field_required));
@@ -83,7 +79,7 @@ public class WithdrawActivity extends Activity implements IWithdrawActivity {
         if (cancel) {
             focusView.requestFocus();
         } else {
-            myPresenter.withdraw(reason, date, amount, currentAccount);
+            myPresenter.withdraw(reason, year, month, day, amount, currentAccount);
             return true;
         }
         return false;

@@ -14,14 +14,8 @@ public class WithdrawPresenter extends Presenter{
         myList = list;
     }
 
-    public void withdraw(String name, String date, String amount, Tab account){
-        int x,y,z;
-        String[] dateNumbers = new String[3];
-        dateNumbers = date.split("/");
-        x = Integer.parseInt(dateNumbers[0]);
-        y = Integer.parseInt(dateNumbers[1]);
-        z = Integer.parseInt(dateNumbers[2]);
+    public void withdraw(String name, int y, int m, int d, String amount, Tab account){
         double money = Double.parseDouble(amount);
-        account.update(new Withdrawal(name, x, y, z, money));
+        account.update(new Withdrawal(name, y, m , d, money));
     }
 }
