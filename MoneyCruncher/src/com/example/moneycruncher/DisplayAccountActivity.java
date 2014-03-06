@@ -41,7 +41,7 @@ public class DisplayAccountActivity extends Activity implements IDisplayAccountA
             account = extras.getString("ACCOUNT");
         }
 
-        currentAccount = myPresenter.getAccount(username, account);
+        currentAccount = myPresenter.getAccount(username, account, theList);
 
         fullName = currentAccount.getFullName();
         balance = String.valueOf(currentAccount.getbalance());
@@ -74,6 +74,12 @@ public class DisplayAccountActivity extends Activity implements IDisplayAccountA
         extras.putString("USERNAME",username);
         extras.putString("ACCOUNT",account);
         intent.putExtras(extras);
+        startActivity(intent);
+    }
+
+    public void back(View view) {
+        Intent intent = new Intent(this, AccountActivity.class);
+        intent.putExtra("Uniqid", "From_Display_Account_Activity");
         startActivity(intent);
     }
 

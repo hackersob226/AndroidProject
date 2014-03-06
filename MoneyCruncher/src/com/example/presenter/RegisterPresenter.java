@@ -5,7 +5,7 @@ import com.example.memory.User;
 import com.example.memory.UserList;
 import com.example.moneycruncher.IRegisterActivity;
 
-public class RegisterPresenter {
+public class RegisterPresenter extends Presenter{
     private final IRegisterActivity myActivity;
     private final IList myList;
 

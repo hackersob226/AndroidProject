@@ -8,7 +8,7 @@ import com.example.memory.User;
 import com.example.memory.UserList;
 import com.example.moneycruncher.ICreateAccountActivity;
 
-public class CreateAccountPresenter {
+public class CreateAccountPresenter extends Presenter{
     private final ICreateAccountActivity myActivity;
     private final IList myList;
 

@@ -40,7 +40,7 @@ public class DepositActivity extends Activity implements IDepositActivity{
         username = extras.getString("USERNAME");
         account = extras.getString("ACCOUNT");
 
-        currentAccount = myPresenter.getAccount(username, account);
+        currentAccount = myPresenter.getAccount(username, account, theList);
 
         msource = (EditText) findViewById(R.id.editText1);
         msource.setText(source);
@@ -97,6 +97,12 @@ public class DepositActivity extends Activity implements IDepositActivity{
             intent.putExtra("Uniqid", "From_Deposit_Activity");
             startActivity(intent);
         }
+    }
+
+    public void back(View view) {
+        Intent intent = new Intent(this, DisplayAccountActivity.class);
+        intent.putExtra("Uniqid", "From_Deposit_Activity");
+        startActivity(intent);
     }
 
     @Override

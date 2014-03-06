@@ -7,7 +7,7 @@ import com.example.memory.Tab;
 import com.example.memory.User;
 import com.example.moneycruncher.IAccountActivity;
 
-public class AccountListingPresenter {
+public class AccountListingPresenter extends Presenter{
     private final IAccountActivity myActivity;
     private final IList myList;
     
