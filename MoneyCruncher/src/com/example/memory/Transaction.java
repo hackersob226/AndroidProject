@@ -15,19 +15,24 @@ public abstract class Transaction {
 		this.amount = amount;
 	}
 	
-	String getName() {
+	public String getName() {
 		return name;
 	}
 	
-	Calendar getDate() {
+	public Calendar getDate() {
 		return date;
 	}
 	
-	Calendar getEntryDate() {
+	public Calendar getEntryDate() {
 		return entryDate;
 	}
 	
-	double getAmount() {
+	public double getAmount() {
 		return amount;
+	}
+	
+	@Override
+	public String toString() {
+		return name+", "+date.toString+", "+entryDate.stoString+", "+amount;
 	}
 }
