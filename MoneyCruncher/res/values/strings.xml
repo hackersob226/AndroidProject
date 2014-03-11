@@ -19,6 +19,7 @@
     <string name="prompt_date">Date ex. 1/1/2011</string>
     <string name="prompt_amount">Amount</string>
     <string name="prompt_reason">Reason</string>
+    <string name="prompt_category">Category</string>
     <string name="title_activity_display_account">DisplayAccountActivity</string>
     <string name="balance">Balance:</string>
     <string name="interest">Interest:</string>

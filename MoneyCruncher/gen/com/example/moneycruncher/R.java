@@ -76,56 +76,57 @@ public final class R {
         public static final int withdraw=0x7f070009;
     }
     public static final class string {
-        public static final int action_forgot_password=0x7f050020;
-        public static final int action_register=0x7f05002b;
+        public static final int action_forgot_password=0x7f050021;
+        public static final int action_register=0x7f05002c;
         public static final int action_settings=0x7f050001;
-        public static final int action_short=0x7f05002c;
-        public static final int action_sign_in_register=0x7f05001e;
-        public static final int action_sign_in_short=0x7f05001f;
+        public static final int action_short=0x7f05002d;
+        public static final int action_sign_in_register=0x7f05001f;
+        public static final int action_sign_in_short=0x7f050020;
         public static final int app_name=0x7f050000;
         /**  Strings related to login 
          */
-        public static final int ask_email=0x7f050029;
-        public static final int ask_password=0x7f05002a;
-        public static final int back=0x7f050018;
-        public static final int balance=0x7f050013;
+        public static final int ask_email=0x7f05002a;
+        public static final int ask_password=0x7f05002b;
+        public static final int back=0x7f050019;
+        public static final int balance=0x7f050014;
         public static final int button_login=0x7f050004;
         public static final int button_register=0x7f050005;
         public static final int create_account=0x7f050007;
-        public static final int deposit=0x7f050015;
-        public static final int done=0x7f050017;
-        public static final int error_field_required=0x7f050026;
-        public static final int error_incorrect_password=0x7f050025;
-        public static final int error_invalid_email=0x7f050022;
-        public static final int error_invalid_input=0x7f050027;
-        public static final int error_invalid_mamail=0x7f050023;
-        public static final int error_invalid_password=0x7f050024;
+        public static final int deposit=0x7f050016;
+        public static final int done=0x7f050018;
+        public static final int error_field_required=0x7f050027;
+        public static final int error_incorrect_password=0x7f050026;
+        public static final int error_invalid_email=0x7f050023;
+        public static final int error_invalid_input=0x7f050028;
+        public static final int error_invalid_mamail=0x7f050024;
+        public static final int error_invalid_password=0x7f050025;
         public static final int hello_world=0x7f050002;
-        public static final int interest=0x7f050014;
-        public static final int login_progress=0x7f05002d;
-        public static final int login_progress_signing_in=0x7f050021;
+        public static final int interest=0x7f050015;
+        public static final int login_progress=0x7f05002e;
+        public static final int login_progress_signing_in=0x7f050022;
         public static final int prompt_amount=0x7f050010;
         public static final int prompt_balance=0x7f05000c;
+        public static final int prompt_category=0x7f050012;
         public static final int prompt_date=0x7f05000f;
         public static final int prompt_displayname=0x7f05000b;
         /**  Strings related to login 
          */
-        public static final int prompt_email=0x7f05001c;
+        public static final int prompt_email=0x7f05001d;
         public static final int prompt_fullname=0x7f05000a;
         public static final int prompt_interest=0x7f05000d;
-        public static final int prompt_password=0x7f05001d;
+        public static final int prompt_password=0x7f05001e;
         public static final int prompt_reason=0x7f050011;
         public static final int prompt_source=0x7f05000e;
         public static final int success=0x7f050003;
         public static final int title_activity_account=0x7f050006;
         public static final int title_activity_create_account=0x7f050008;
-        public static final int title_activity_deposit=0x7f050019;
-        public static final int title_activity_display_account=0x7f050012;
-        public static final int title_activity_login=0x7f05001b;
-        public static final int title_activity_register=0x7f050028;
-        public static final int title_activity_withdraw=0x7f05001a;
+        public static final int title_activity_deposit=0x7f05001a;
+        public static final int title_activity_display_account=0x7f050013;
+        public static final int title_activity_login=0x7f05001c;
+        public static final int title_activity_register=0x7f050029;
+        public static final int title_activity_withdraw=0x7f05001b;
         public static final int title_deposit=0x7f050009;
-        public static final int withdrawal=0x7f050016;
+        public static final int withdrawal=0x7f050017;
     }
     public static final class style {
         /** 

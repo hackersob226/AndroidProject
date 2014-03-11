@@ -1,9 +1,15 @@
 package com.example.moneycruncher;
 
-import android.view.View;
-
+/**
+ * @author 
+ *
+ */
 public interface IAccountActivity {
-    
+
+    /**
+     * 
+     * @param strList 
+     */
     void displayAccounts(String[] strList);
 
 }
