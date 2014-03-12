@@ -29,14 +29,13 @@
         android:text="@string/done" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/editText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="29dp"
         android:ems="10"
-        android:hint="@string/prompt_reason" />
+        android:hint="@string/prompt_category" />
 
     <EditText
         android:id="@+id/editText3"
@@ -58,5 +57,14 @@
         android:layout_below="@+id/editText3"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText2"
+        android:layout_below="@+id/editText2"
+        android:ems="10"
+        android:hint="@string/prompt_reason" />
 
 </RelativeLayout>

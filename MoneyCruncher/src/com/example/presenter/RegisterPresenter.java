@@ -5,27 +5,49 @@ import com.example.memory.User;
 import com.example.memory.UserList;
 import com.example.moneycruncher.IRegisterActivity;
 
-public class RegisterPresenter extends Presenter{
+/**
+ * @author 
+ *
+ */
+public class RegisterPresenter extends Presenter {
+    /**
+     * 
+     */
     private final IRegisterActivity myActivity;
+    /**
+     * 
+     */
     private final IList myList;
 
+    /**
+     * @param activity 
+     * @param list 
+     */
     public RegisterPresenter(IRegisterActivity activity, IList list) {
-        myActivity = activity;
-        myList = list;
+	myActivity = activity;
+	myList = list;
     }
-    
+
+    /**
+     * @param mEmail 
+     * @return boolean
+     */
     public boolean checkUser(String mEmail) {
-        UserList theList = (UserList)myList;
-        for (int i = 0; i < theList.getLength(); i++) {
-            if(theList.getUser(i).getName().equals(mEmail)) {
-                return true;
-            }
-        }
-        return false;
+	UserList theList = (UserList) myList;
+	for (int i = 0; i < theList.getLength(); i++) {
+	    if (theList.getUser(i).getName().equals(mEmail)) {
+		return true;
+	    }
+	}
+	return false;
     }
-    
+
+    /**
+     * @param user 
+     * @param pass 
+     */
     public void registerUser(String user, String pass) {
-        UserList theList = (UserList)myList;
-        theList.add(new User(user, pass));
+	UserList theList = (UserList) myList;
+	theList.add(new User(user, pass));
     }
 }

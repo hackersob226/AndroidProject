@@ -20,92 +20,121 @@ import com.example.memory.Tab;
 import com.example.memory.User;
 import com.example.presenter.AccountListingPresenter;
 
-public class AccountActivity extends Activity implements IAccountActivity{
-	ListView listView;
-	User theUser;
-	public static String user;
-	public static String account;
-	public static String username;
-	private AccountListingPresenter myPresenter;
+/**
+ * @author
+ *
+ */
+public class AccountActivity extends Activity implements IAccountActivity {
+    /**
+     * 
+     */
+    ListView listView;
+    /**
+     * 
+     */
+    User theUser;
+    /**
+     * 
+     */
+    public static String user;
+    /**
+     * 
+     */
+    public static String account;
+    /**
+     * 
+     */
+    public static String username;
+    /**
+     * 
+     */
+    private AccountListingPresenter myPresenter;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_account);
-		
-	    IList theList = Singleton.getInstance().getList();
-	    myPresenter = new AccountListingPresenter(this, theList);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+	super.onCreate(savedInstanceState);
+	setContentView(R.layout.activity_account);
 
-		String origin = getIntent().getExtras().getString("Uniqid");
-		if (origin.equals("From_Login_Activity")){
-	          username = getIntent().getStringExtra(LoginActivity.user);
-		}
+	IList theList = Singleton.getInstance().getList();
+	myPresenter = new AccountListingPresenter(this, theList);
 
-		listView = (ListView) findViewById(R.id.list);
-
-		ArrayList<Tab> accList = new ArrayList<Tab>();
-		theUser = myPresenter.findUser(theList, username);
-        accList = theUser.getAccList();
-
-		String [] strList =  myPresenter.fillStringList(accList);
-
-		displayAccounts(strList);  
-		listView.setClickable(true);
-        listView.setOnItemClickListener(
-                new OnItemClickListener()
-                {
-                    @Override
-                    public void onItemClick(AdapterView<?> arg0, View view,
-                            int position, long id) {
-                            Intent intent = new Intent(AccountActivity.this, DisplayAccountActivity.class);
-                            String tempAccount = (String)listView.getItemAtPosition(position);
-
-                            Bundle extras = new Bundle();
-                            extras.putString("Uniqid", "From_Account_Activity");
-                            extras.putString("USERNAME",username);
-                            extras.putString("ACCOUNT",tempAccount);
-                            intent.putExtras(extras);
-
-                            startActivity(intent);
-                         }
-                    }
-             );
+	String origin = getIntent().getExtras().getString("Uniqid");
+	if (origin.equals("From_Login_Activity")) {
+	    username = getIntent().getStringExtra(LoginActivity.user);
 	}
-	
-	public void displayAccounts(String[] strList) {
-	    // ADAPTER
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, strList);
-        listView.setAdapter(adapter);
-	}
-	
-	public void create(View view) {
-		Intent intent = new Intent(this, CreateAccountActivity.class);
-		intent.putExtra(user, username);
+
+	listView = (ListView) findViewById(R.id.list);
+
+	ArrayList<Tab> accList = new ArrayList<Tab>();
+	theUser = myPresenter.findUser(theList, username);
+	accList = theUser.getAccList();
+
+	String[] strList = myPresenter.fillStringList(accList);
+
+	displayAccounts(strList);
+	listView.setClickable(true);
+	listView.setOnItemClickListener(new OnItemClickListener() {
+	    @Override
+	    public void onItemClick(AdapterView<?> arg0, View view,
+		    int position, long id) {
+		Intent intent = new Intent(AccountActivity.this,
+			DisplayAccountActivity.class);
+		String tempAccount = (String) listView
+			.getItemAtPosition(position);
+
+		Bundle extras = new Bundle();
+		extras.putString("Uniqid", "From_Account_Activity");
+		extras.putString("USERNAME", username);
+		extras.putString("ACCOUNT", tempAccount);
+		intent.putExtras(extras);
+
 		startActivity(intent);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-	    menu.add(0, 1, 0, "Sign Out");
-		getMenuInflater().inflate(R.menu.account, menu);
-		return true;
-	}
-	
-	public boolean onOptionsItemSelected(MenuItem item) {
-	    // Handle item selection
-	    switch (item.getItemId()) {
-	        case 1:
-	            Intent intent = new Intent(this, MainActivity.class);
-	            startActivity(intent);
-	            return true;
-	        default:
-	            return super.onOptionsItemSelected(item);
 	    }
+	});
+    }
+
+    /** 
+     * @param strList 
+     */
+    public void displayAccounts(String[] strList) {
+	// ADAPTER
+	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+		android.R.layout.simple_list_item_1, strList);
+	listView.setAdapter(adapter);
+    }
+
+    /**
+     * @param view 
+     */
+    public void create(View view) {
+	Intent intent = new Intent(this, CreateAccountActivity.class);
+	intent.putExtra(user, username);
+	startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+	// Inflate the menu; this adds items to the action bar if it is present.
+	menu.add(0, 1, 0, "Sign Out");
+	getMenuInflater().inflate(R.menu.account, menu);
+	return true;
+    }
+
+    /** 
+     * @param item 
+     * @return boolean
+     */
+    public boolean onOptionsItemSelected(MenuItem item) {
+	// Handle item selection
+	switch (item.getItemId()) {
+	case 1:
+	    Intent intent = new Intent(this, MainActivity.class);
+	    startActivity(intent);
+	    return true;
+	default:
+	    return super.onOptionsItemSelected(item);
 	}
+    }
 
 }
-/*
- * 
- */
 
