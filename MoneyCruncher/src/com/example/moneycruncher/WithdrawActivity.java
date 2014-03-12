@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.example.memory.IList;
 import com.example.memory.Singleton;
@@ -56,10 +57,6 @@ public class WithdrawActivity extends Activity implements IWithdrawActivity {
     /**
      * 
      */
-    private EditText mcategory;
-    /**
-     * 
-     */
     private EditText mamount;
     /**
      * 
@@ -69,6 +66,10 @@ public class WithdrawActivity extends Activity implements IWithdrawActivity {
      * 
      */
     private DatePicker datePicker;
+    /**
+     * 
+     */
+    private Spinner spinner1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,15 +88,21 @@ public class WithdrawActivity extends Activity implements IWithdrawActivity {
 	mreason = (EditText) findViewById(R.id.editText1);
 	mreason.setText(reason);
 
-	mcategory = (EditText) findViewById(R.id.editText2);
-	mcategory.setText(category);
-
 	mamount = (EditText) findViewById(R.id.editText3);
 	mamount.setText(amount);
 
 	datePicker = (DatePicker) findViewById(R.id.datePicker1);
 
+	addListenerOnSpinnerItemSelection();
     }
+
+    /**
+     * 
+     */
+    public void addListenerOnSpinnerItemSelection() {
+        spinner1 = (Spinner) findViewById(R.id.spinner1);
+        spinner1.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+      }
 
     /**
      * @return boolean
@@ -116,20 +123,24 @@ public class WithdrawActivity extends Activity implements IWithdrawActivity {
 	    cancel = true;
 	}
 
-	if (TextUtils.isEmpty(category)) {
-	    mcategory.setError(getString(R.string.error_field_required));
-	    focusView = mcategory;
-	    cancel = true;
-	}
+	category = String.valueOf(spinner1.getSelectedItem());
 
 	int day = datePicker.getDayOfMonth();
-	int month = datePicker.getMonth() + 1;
+	int month = datePicker.getMonth();
 	int year = datePicker.getYear();
 
 	if (TextUtils.isEmpty(amount)) {
 	    mamount.setError(getString(R.string.error_field_required));
 	    focusView = mamount;
 	    cancel = true;
+	}
+
+	if (!TextUtils.isEmpty(amount)) {
+    	if (!myPresenter.checkBalance(amount, currentAccount)) {
+    	    mamount.setError(getString(R.string.error_insufficient_funds));
+    	    focusView = mamount;
+    	    cancel = true;
+    	}
 	}
 
 	if (cancel) {

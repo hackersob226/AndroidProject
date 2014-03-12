@@ -106,7 +106,7 @@ public class DepositActivity extends Activity implements IDepositActivity {
 	}
 
 	int day = datePicker.getDayOfMonth();
-	int month = datePicker.getMonth() + 1;
+	int month = datePicker.getMonth();
 	int year = datePicker.getYear();
 
 	if (TextUtils.isEmpty(amount)) {

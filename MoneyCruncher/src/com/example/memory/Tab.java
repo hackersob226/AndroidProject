@@ -27,7 +27,7 @@ public class Tab {
     /**
      * 
      */
-    private List<Transaction> history;
+    private ArrayList<Transaction> history;
 
     /**
      * @param fullName 
@@ -85,7 +85,7 @@ public class Tab {
     /**
      * @return List<Transaction>
      */
-    public List<Transaction> getHistory() {
+    public ArrayList<Transaction> getHistory() {
 	return history;
     }
 

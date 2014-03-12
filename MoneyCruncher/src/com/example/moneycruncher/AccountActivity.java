@@ -12,7 +12,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.memory.IList;
 import com.example.memory.Singleton;
@@ -110,6 +109,18 @@ public class AccountActivity extends Activity implements IAccountActivity {
 	Intent intent = new Intent(this, CreateAccountActivity.class);
 	intent.putExtra(user, username);
 	startActivity(intent);
+    }
+
+    /**
+     * @param view
+     */
+    public void generate(View view) {
+    if (theUser.getAccList().size() > 0) {
+        Intent intent = new Intent(this, ReportActivity.class);
+        intent.putExtra("Uniqid", "From_Account_Activity");
+        intent.putExtra(user, username);
+        startActivity(intent);
+    }
     }
 
     @Override

@@ -16,7 +16,7 @@
     <string name="prompt_balance">Balance</string>
     <string name="prompt_interest">Interest</string>
     <string name="prompt_source">Source</string>
-    <string name="prompt_date">Date ex. 1/1/2011</string>
+    <string name="prompt_date">Select Start Date and End Date</string>
     <string name="prompt_amount">Amount</string>
     <string name="prompt_reason">Reason</string>
     <string name="prompt_category">Category</string>
@@ -27,7 +27,30 @@
     <string name="withdrawal">Withdraw</string>
     <string name="done">Done</string>
     <string name="back">Back</string>
+    <string name="submit">Submit</string>
     <string name="title_activity_deposit">Deposit</string>
     <string name="title_activity_withdraw">Withdraw</string>
+    <string name="generate_reports">Generate Report(s)</string>
+    <string name="title_activity_report">Select a Report</string>
+    <string name="title_activity_spending_category_report">Spending Category Report</string>
+    <string name="rent">Rent</string>
+    <string name="food">Food</string>
+    <string name="clothes">Clothes</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="total">Total</string>
+    <string name="category_prompt">Choose a category</string>
+
+    <string-array name="category_arrays">
+        <item>Rent</item>
+        <item>Food</item>
+        <item>Clothes</item>
+        <item>Entertainment</item>
+    </string-array>
+
+    <string name="report_prompt">Choose a Report</string>
+
+    <string-array name="report_arrays">
+        <item>Spending Category Report</item>
+    </string-array>
 
 </resources>

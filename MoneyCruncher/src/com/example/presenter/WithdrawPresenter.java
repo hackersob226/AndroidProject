@@ -29,6 +29,21 @@ public class WithdrawPresenter extends Presenter {
     }
 
     /**
+     * @param account
+     * @return
+     */
+    public boolean checkBalance(String amount, Tab account) {
+        double input = Double.parseDouble(amount);
+        if (account.getbalance() == 0) {
+            return false;
+        }
+        if (account.getbalance() - input < 0) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * @param name 
      * @param category 
      * @param y 

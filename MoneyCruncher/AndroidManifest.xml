@@ -52,6 +52,14 @@
             android:name="com.example.moneycruncher.WithdrawActivity"
             android:label="@string/title_activity_withdraw" >
         </activity>
+        <activity
+            android:name="com.example.moneycruncher.ReportActivity"
+            android:label="@string/title_activity_report" >
+        </activity>
+        <activity
+            android:name="com.example.moneycruncher.SpendingCategoryReportActivity"
+            android:label="@string/title_activity_spending_category_report" >
+        </activity>
     </application>
 
 </manifest>
