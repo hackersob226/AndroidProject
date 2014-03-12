@@ -68,11 +68,15 @@ public class SpendingCategoryReportActivity extends Activity implements
      * 
      */
     private SpendingCategoryPresenter myPresenter;
+    /**
+     * 
+     */
+    private String start = "";
+    private String end = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spending_category_report);
-        String start = "", end = "";
 
         IList theList = Singleton.getInstance().getList();
         myPresenter = new SpendingCategoryPresenter(this, theList);
@@ -86,6 +90,10 @@ public class SpendingCategoryReportActivity extends Activity implements
         }
 
         theUser = myPresenter.findUser(theList, username);
+        display();
+    }
+
+    public void display() {
         Calendar startDate = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         try {

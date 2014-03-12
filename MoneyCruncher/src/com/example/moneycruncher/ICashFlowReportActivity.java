@@ -1,5 +1,5 @@
 package com.example.moneycruncher;
 
-public interface ISpendingAccountReportActivity {
+public interface ICashFlowReportActivity {
     void display();
 }

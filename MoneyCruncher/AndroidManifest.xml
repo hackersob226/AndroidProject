@@ -60,6 +60,10 @@
             android:name="com.example.moneycruncher.SpendingCategoryReportActivity"
             android:label="@string/title_activity_spending_category_report" >
         </activity>
+        <activity
+            android:name="com.example.moneycruncher.CashFlowReportActivity"
+            android:label="@string/title_activity_cash_flow_report" >
+        </activity>
     </application>
 
 </manifest>

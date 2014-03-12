@@ -68,13 +68,19 @@ public class ReportActivity extends Activity{
 
     public void advance(View view) {
         boolean flag = attemptAdvance();
-        if (String.valueOf(spinner1.getSelectedItem()).equals("Spending Category Report") && flag) {
+        String report = String.valueOf(spinner1.getSelectedItem());
+        Bundle extras = new Bundle();
+        extras.putString("Uniqid", "From_Report_Activity");
+        extras.putString("USERNAME", username);
+        extras.putString("STARTDATE", start);
+        extras.putString("ENDDATE", end);
+
+        if (report.equals("Spending Category Report") && flag) {
             Intent intent = new Intent(this, SpendingCategoryReportActivity.class);
-            Bundle extras = new Bundle();
-            extras.putString("Uniqid", "From_Report_Activity");
-            extras.putString("USERNAME", username);
-            extras.putString("STARTDATE", start);
-            extras.putString("ENDDATE", end);
+            intent.putExtras(extras);
+            startActivity(intent);
+        } else if (report.equals("Cash Flow Report") && flag) {
+            Intent intent = new Intent(this, CashFlowReportActivity.class);
             intent.putExtras(extras);
             startActivity(intent);
         }

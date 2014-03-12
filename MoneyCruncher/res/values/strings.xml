@@ -33,11 +33,14 @@
     <string name="generate_reports">Generate Report(s)</string>
     <string name="title_activity_report">Select a Report</string>
     <string name="title_activity_spending_category_report">Spending Category Report</string>
+    <string name="title_activity_cash_flow_report">Cash Flow Report</string>
     <string name="rent">Rent</string>
     <string name="food">Food</string>
     <string name="clothes">Clothes</string>
     <string name="entertainment">Entertainment</string>
     <string name="total">Total</string>
+    <string name="income">Income</string>
+    <string name="expenses">Expenses</string>
     <string name="category_prompt">Choose a category</string>
 
     <string-array name="category_arrays">
@@ -51,6 +54,7 @@
 
     <string-array name="report_arrays">
         <item>Spending Category Report</item>
+        <item>Cash Flow Report</item>
     </string-array>
 
 </resources>
