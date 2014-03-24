@@ -44,7 +44,14 @@ public class CreateAccountPresenter extends Presenter {
 			new Tab(fullName, displayName, Double
 				.parseDouble(balance), Double
 				.parseDouble(interest)));
+	        }
 	    }
-	}
+    }
+
+    public boolean checkNumber(String number) {
+        if (number.substring(number.length() - 1).equals(("."))) {
+            return true;
+        }
+        return false;
     }
 }

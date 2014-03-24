@@ -57,4 +57,11 @@ public class WithdrawPresenter extends Presenter {
 	double money = Double.parseDouble(amount);
 	account.update(new Withdrawal(name, category, y, m, d, money));
     }
+
+    public boolean checkNumber(String number) {
+        if (number.substring(number.length() - 1).equals(("."))) {
+            return true;
+        }
+        return false;
+    }
 }

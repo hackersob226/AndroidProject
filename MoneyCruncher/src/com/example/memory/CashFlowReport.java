@@ -14,7 +14,7 @@ public class CashFlowReport extends Report{
 
     public String[] getDisplayList(User user) {
         ArrayList<Tab> accList = user.getAccList();
-        double deposit = 0, withdraw = 0, total = 0;
+        double deposit = 0, withdraw = 0;
 
         for (int i = 0; i < accList.size(); i++) {
             ArrayList<Transaction> history = accList.get(i).getHistory();

@@ -145,6 +145,17 @@ public class LoginActivity extends Activity implements ILoginActivity {
 	boolean cancel = false;
 	View focusView = null;
 
+	// Check for a valid email address.
+    if (TextUtils.isEmpty(mEmail)) {
+        mEmailView.setError(getString(R.string.error_field_required));
+        focusView = mEmailView;
+        cancel = true;
+    } else if (myPresenter.checkUser(mEmail)) {
+        mEmailView.setError(getString(R.string.error_invalid_email));
+        focusView = mEmailView;
+        cancel = true;
+    }
+
 	// Check for a valid password.
 	if (TextUtils.isEmpty(mPassword)) {
 	    mPasswordView.setError(getString(R.string.error_field_required));
@@ -155,19 +166,6 @@ public class LoginActivity extends Activity implements ILoginActivity {
 		mPasswordView
 			.setError(getString(R.string.error_incorrect_password));
 		focusView = mPasswordView;
-		cancel = true;
-	    }
-	}
-
-	// Check for a valid email address.
-	if (TextUtils.isEmpty(mEmail)) {
-	    mEmailView.setError(getString(R.string.error_field_required));
-	    focusView = mEmailView;
-	    cancel = true;
-	} else if (mEmail.length() > 0) {
-	    if (myPresenter.checkUser(mEmail)) {
-		mEmailView.setError(getString(R.string.error_invalid_email));
-		focusView = mEmailView;
 		cancel = true;
 	    }
 	}

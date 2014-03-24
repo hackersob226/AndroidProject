@@ -113,6 +113,10 @@ public class DepositActivity extends Activity implements IDepositActivity {
 	    mamount.setError(getString(R.string.error_field_required));
 	    focusView = mamount;
 	    cancel = true;
+	} else if (myPresenter.checkNumber(amount)) {
+	    mamount.setError(getString(R.string.error_invalid_input));
+	    focusView = mamount;
+	    cancel = true;
 	}
 
 	if (cancel) {

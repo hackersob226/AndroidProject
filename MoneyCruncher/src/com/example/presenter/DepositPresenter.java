@@ -41,4 +41,11 @@ public class DepositPresenter extends Presenter {
 	double money = Double.parseDouble(amount);
 	account.update(new Deposit(name, y, m, d, money));
     }
+
+    public boolean checkNumber(String number) {
+        if (number.substring(number.length() - 1).equals(("."))) {
+            return true;
+        }
+        return false;
+    }
 }

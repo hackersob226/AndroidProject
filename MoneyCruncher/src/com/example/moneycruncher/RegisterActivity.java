@@ -157,12 +157,10 @@ public class RegisterActivity extends Activity implements IRegisterActivity {
 	    mEmailView.setError(getString(R.string.error_field_required));
 	    focusView = mEmailView;
 	    cancel = true;
-	} else if (mEmail.length() > 0) {
-	    if (myPresenter.checkUser(mEmail)) {
+	} else if (myPresenter.checkUser(mEmail)) {
 		mEmailView.setError(getString(R.string.error_invalid_mamail));
 		focusView = mEmailView;
 		cancel = true;
-	    }
 	}
 
 	if (cancel) {

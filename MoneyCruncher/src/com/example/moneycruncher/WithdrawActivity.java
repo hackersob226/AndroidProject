@@ -133,14 +133,14 @@ public class WithdrawActivity extends Activity implements IWithdrawActivity {
 	    mamount.setError(getString(R.string.error_field_required));
 	    focusView = mamount;
 	    cancel = true;
-	}
-
-	if (!TextUtils.isEmpty(amount)) {
-    	if (!myPresenter.checkBalance(amount, currentAccount)) {
-    	    mamount.setError(getString(R.string.error_insufficient_funds));
-    	    focusView = mamount;
-    	    cancel = true;
-    	}
+	}  else if (myPresenter.checkNumber(amount)) {
+        mamount.setError(getString(R.string.error_invalid_input));
+        focusView = mamount;
+        cancel = true;
+    }  else if (!myPresenter.checkBalance(amount, currentAccount)) {
+    	mamount.setError(getString(R.string.error_insufficient_funds));
+    	focusView = mamount;
+    	cancel = true;
 	}
 
 	if (cancel) {

@@ -121,10 +121,18 @@ public class CreateAccountActivity extends Activity implements
 	    mbalance.setError(getString(R.string.error_field_required));
 	    focusView = mbalance;
 	    cancel = true;
+	} else if (myPresenter.checkNumber(balance)){
+	    mbalance.setError(getString(R.string.error_invalid_input));
+	    focusView = mbalance;
+	    cancel = true;
 	}
 
 	if (TextUtils.isEmpty(interest)) {
 	    minterest.setError(getString(R.string.error_field_required));
+	    focusView = minterest;
+	    cancel = true;
+	} else if (myPresenter.checkNumber(interest)) {
+	    minterest.setError(getString(R.string.error_invalid_input));
 	    focusView = minterest;
 	    cancel = true;
 	}
