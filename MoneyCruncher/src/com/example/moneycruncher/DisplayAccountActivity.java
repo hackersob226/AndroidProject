@@ -66,8 +66,7 @@ public class DisplayAccountActivity extends Activity implements
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.activity_display_account);
 
-	IList theList = Singleton.getInstance().getList();
-	myPresenter = new DisplayAccountPresenter(this, theList);
+	myPresenter = new DisplayAccountPresenter();
 
 	Bundle extras = getIntent().getExtras();
 	String origin = extras.getString("Uniqid");
@@ -76,7 +75,7 @@ public class DisplayAccountActivity extends Activity implements
 	    account = extras.getString("ACCOUNT");
 	}
 
-	currentAccount = myPresenter.getAccount(username, account, theList);
+	currentAccount = myPresenter.getAccount(username, account);
 
 	fullName = currentAccount.getFullName();
 	balance = String.valueOf(currentAccount.getbalance());

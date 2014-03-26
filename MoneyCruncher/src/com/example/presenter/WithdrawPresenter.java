@@ -1,6 +1,7 @@
 package com.example.presenter;
 
 import com.example.memory.IList;
+import com.example.memory.Singleton;
 import com.example.memory.Tab;
 import com.example.memory.Withdrawal;
 import com.example.moneycruncher.IWithdrawActivity;
@@ -13,19 +14,18 @@ public class WithdrawPresenter extends Presenter {
     /**
      * 
      */
-    private final IWithdrawActivity myActivity;
-    /**
-     * 
-     */
-    private final IList myList;
+    private Singleton facade;
 
     /**
      * @param activity 
      * @param list 
      */
-    public WithdrawPresenter(IWithdrawActivity activity, IList list) {
-	myActivity = activity;
-	myList = list;
+    public WithdrawPresenter() {
+        facade = Singleton.getInstance();
+    }
+
+    public Tab getAccount(String username, String account) {
+        return facade.getAccount(username, account);
     }
 
     /**
@@ -54,8 +54,7 @@ public class WithdrawPresenter extends Presenter {
      */
     public void withdraw(String name, String category, int y, int m, int d,
 	    String amount, Tab account) {
-	double money = Double.parseDouble(amount);
-	account.update(new Withdrawal(name, category, y, m, d, money));
+        facade.withdraw(name, category, y, m, d, amount, account);
     }
 
     public boolean checkNumber(String number) {

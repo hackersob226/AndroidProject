@@ -1,6 +1,8 @@
 package com.example.presenter;
 
 import com.example.memory.IList;
+import com.example.memory.Singleton;
+import com.example.memory.Tab;
 import com.example.moneycruncher.IDisplayAccountActivity;
 
 /**
@@ -11,18 +13,17 @@ public class DisplayAccountPresenter extends Presenter {
     /**
      * 
      */
-    private final IDisplayAccountActivity myActivity;
-    /**
-     * 
-     */
-    private final IList myList;
+    private Singleton facade;
 
     /**
      * @param activity 
      * @param list 
      */
-    public DisplayAccountPresenter(IDisplayAccountActivity activity, IList list) {
-	myActivity = activity;
-	myList = list;
+    public DisplayAccountPresenter() {
+        facade = Singleton.getInstance();
+    }
+
+    public Tab getAccount(String username, String account) {
+        return facade.getAccount(username, account);
     }
 }

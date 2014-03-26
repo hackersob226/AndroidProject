@@ -35,8 +35,7 @@ public class CashFlowReportActivity extends Activity implements ICashFlowReportA
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cash_flow_report);
 
-        IList theList = Singleton.getInstance().getList();
-        myPresenter = new CashFlowPresenter(this, theList);
+        myPresenter = new CashFlowPresenter();
 
         Bundle extras = getIntent().getExtras();
         String origin = extras.getString("Uniqid");
@@ -46,7 +45,7 @@ public class CashFlowReportActivity extends Activity implements ICashFlowReportA
             end = extras.getString("ENDDATE");
         }
 
-        theUser = myPresenter.findUser(theList, username);
+        theUser = myPresenter.findUser(username);
         display();
     }
 

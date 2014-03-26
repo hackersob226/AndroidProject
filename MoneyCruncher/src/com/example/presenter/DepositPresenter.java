@@ -2,6 +2,7 @@ package com.example.presenter;
 
 import com.example.memory.Deposit;
 import com.example.memory.IList;
+import com.example.memory.Singleton;
 import com.example.memory.Tab;
 import com.example.moneycruncher.IDepositActivity;
 
@@ -13,21 +14,19 @@ public class DepositPresenter extends Presenter {
     /**
      * 
      */
-    private final IDepositActivity myActivity;
-    /**
-     * 
-     */
-    private final IList myList;
+    private Singleton facade;
 
     /**
      * @param activity 
      * @param list 
      */
-    public DepositPresenter(IDepositActivity activity, IList list) {
-	myActivity = activity;
-	myList = list;
+    public DepositPresenter() {
+        facade = Singleton.getInstance();
     }
 
+    public Tab getAccount(String username, String account) {
+        return facade.getAccount(username, account);
+    }
     /**
      * @param name 
      * @param y 
@@ -38,8 +37,7 @@ public class DepositPresenter extends Presenter {
      */
     public void deposit(String name, int y, int m, int d, String amount,
 	    Tab account) {
-	double money = Double.parseDouble(amount);
-	account.update(new Deposit(name, y, m, d, money));
+        facade.deposit(name, y, m , d, amount, account);
     }
 
     public boolean checkNumber(String number) {

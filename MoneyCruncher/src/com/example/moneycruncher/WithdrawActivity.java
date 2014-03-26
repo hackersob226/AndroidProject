@@ -76,14 +76,13 @@ public class WithdrawActivity extends Activity implements IWithdrawActivity {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.activity_withdraw);
 
-	IList theList = Singleton.getInstance().getList();
-	myPresenter = new WithdrawPresenter(this, theList);
+	myPresenter = new WithdrawPresenter();
 
 	Bundle extras = getIntent().getExtras();
 	username = extras.getString("USERNAME");
 	account = extras.getString("ACCOUNT");
 
-	currentAccount = myPresenter.getAccount(username, account, theList);
+	currentAccount = myPresenter.getAccount(username, account);
 
 	mreason = (EditText) findViewById(R.id.editText1);
 	mreason.setText(reason);

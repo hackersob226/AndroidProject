@@ -1,18 +1,20 @@
 package com.example.memory;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * @author 
  *
  */
-public class UserList implements IList {
+public class UserList implements IList, Serializable {
+    private static final long serialVersionUID = 1L;
     /**
      * 
      */
-    private static ArrayList<User> myList = new ArrayList<User>();
+    private ArrayList<User> myList = new ArrayList<User>();
 
-    static {
+    public UserList() {
 	myList.add(new User("admin", "pass123"));
     }
 
@@ -54,5 +56,4 @@ public class UserList implements IList {
     public ArrayList<User> getList() {
 	return myList;
     }
-
 }

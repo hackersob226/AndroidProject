@@ -1,35 +1,23 @@
 package com.example.presenter;
 
-import com.example.memory.IList;
-import com.example.memory.User;
-import com.example.memory.UserList;
-import com.example.moneycruncher.ILoginActivity;
+import com.example.memory.Singleton;
 
 /**
  * @author 
  *
  */
 public class LoginPresenter extends Presenter {
-    /**
-     * 
-     */
-    private final ILoginActivity myActivity;
-    /**
-     * 
-     */
-    private final IList myList;
-    /**
-     * 
-     */
-    private User user;
 
+    /**
+     * 
+     */
+    private Singleton facade;
     /**
      * @param activity 
      * @param list 
      */
-    public LoginPresenter(ILoginActivity activity, IList list) {
-	myActivity = activity;
-	myList = list;
+    public LoginPresenter() {
+        facade = Singleton.getInstance();
     }
 
     /**
@@ -37,10 +25,7 @@ public class LoginPresenter extends Presenter {
      * @return boolean
      */
     public boolean checkPassword(String mPassword) {
-	if (!mPassword.equals(user.getPass())) {
-	    return true;
-	}
-	return false;
+        return facade.verifyPass(mPassword);
     }
 
     /**
@@ -48,18 +33,6 @@ public class LoginPresenter extends Presenter {
      * @return boolean
      */
     public boolean checkUser(String mEmail) {
-	UserList theList = (UserList) myList;
-	for (int i = 0; i < theList.getLength(); i++) {
-	    if (mEmail.equals(theList.getUser(i).getName())) {
-	    user = theList.getUser(i);
-		i = theList.getLength();
-	    } else if (!mEmail.equals(theList.getUser(i).getName())
-		    && theList.getLength() == 1) {
-		return true;
-	    } else if (i == theList.getLength() - 1) {
-		return true;
-	    }
-	}
-	return false;
+        return facade.verifyLogin(mEmail);
     }
 }

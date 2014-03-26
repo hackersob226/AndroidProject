@@ -1,9 +1,10 @@
 package com.example.presenter;
 
-import com.example.memory.IList;
-import com.example.memory.User;
-import com.example.memory.UserList;
-import com.example.moneycruncher.IRegisterActivity;
+import java.io.IOException;
+
+import android.util.Log;
+
+import com.example.memory.Singleton;
 
 /**
  * @author 
@@ -13,19 +14,14 @@ public class RegisterPresenter extends Presenter {
     /**
      * 
      */
-    private final IRegisterActivity myActivity;
-    /**
-     * 
-     */
-    private final IList myList;
+    private Singleton facade;
 
     /**
      * @param activity 
      * @param list 
      */
-    public RegisterPresenter(IRegisterActivity activity, IList list) {
-	myActivity = activity;
-	myList = list;
+    public RegisterPresenter() {
+        facade = Singleton.getInstance();
     }
 
     /**
@@ -33,13 +29,7 @@ public class RegisterPresenter extends Presenter {
      * @return boolean
      */
     public boolean checkUser(String mEmail) {
-	UserList theList = (UserList) myList;
-	for (int i = 0; i < theList.getLength(); i++) {
-	    if (theList.getUser(i).getName().equals(mEmail)) {
-		return true;
-	    }
-	}
-	return false;
+        return facade.verifyRegister(mEmail);
     }
 
     /**
@@ -47,7 +37,14 @@ public class RegisterPresenter extends Presenter {
      * @param pass 
      */
     public void registerUser(String user, String pass) {
-	UserList theList = (UserList) myList;
-	theList.add(new User(user, pass));
+        facade.register(user, pass);
+    }
+
+    public void saveBinary() {
+        try {
+            facade.saveBinary();
+        } catch (IOException e) {
+            Log.e("ACCOUNT ACTIVITY", "error on closing save binary file");
+        }
     }
 }

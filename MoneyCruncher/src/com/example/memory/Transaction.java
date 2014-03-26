@@ -1,12 +1,14 @@
 package com.example.memory;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 /**
  * @author 
  *
  */
-public abstract class Transaction {
+public abstract class Transaction implements Serializable{
+    private static final long serialVersionUID = 1L;
     /**
      * 
      */

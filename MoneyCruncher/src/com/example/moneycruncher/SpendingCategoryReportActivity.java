@@ -78,8 +78,7 @@ public class SpendingCategoryReportActivity extends Activity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spending_category_report);
 
-        IList theList = Singleton.getInstance().getList();
-        myPresenter = new SpendingCategoryPresenter(this, theList);
+        myPresenter = new SpendingCategoryPresenter();
 
         Bundle extras = getIntent().getExtras();
         String origin = extras.getString("Uniqid");
@@ -89,7 +88,7 @@ public class SpendingCategoryReportActivity extends Activity implements
             end = extras.getString("ENDDATE");
         }
 
-        theUser = myPresenter.findUser(theList, username);
+        theUser = myPresenter.findUser(username);
         display();
     }
 

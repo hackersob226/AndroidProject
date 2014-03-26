@@ -67,14 +67,13 @@ public class DepositActivity extends Activity implements IDepositActivity {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.activity_deposit);
 
-	IList theList = Singleton.getInstance().getList();
-	myPresenter = new DepositPresenter(this, theList);
+	myPresenter = new DepositPresenter();
 
 	Bundle extras = getIntent().getExtras();
 	username = extras.getString("USERNAME");
 	account = extras.getString("ACCOUNT");
 
-	currentAccount = myPresenter.getAccount(username, account, theList);
+	currentAccount = myPresenter.getAccount(username, account);
 
 	msource = (EditText) findViewById(R.id.editText1);
 	msource.setText(source);

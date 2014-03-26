@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.memory.IList;
 import com.example.memory.Singleton;
@@ -78,8 +80,7 @@ public class RegisterActivity extends Activity implements IRegisterActivity {
 
 	setContentView(R.layout.activity_register);
 
-	IList theList = Singleton.getInstance().getList();
-	myPresenter = new RegisterPresenter(this, theList);
+	myPresenter = new RegisterPresenter();
 
 	// Set up the login form.
 	mEmail = getIntent().getStringExtra(EXTRA_EMAIL);
@@ -177,6 +178,12 @@ public class RegisterActivity extends Activity implements IRegisterActivity {
 
 	    mAuthTask = new UserLoginTask();
 	    mAuthTask.execute((Void) null);
+
+        myPresenter.saveBinary();
+        Toast.makeText(getApplicationContext(), "Saving...",
+                    Toast.LENGTH_LONG).show();
+	    Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
 	}
     }
 

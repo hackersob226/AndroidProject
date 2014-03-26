@@ -70,8 +70,7 @@ public class CreateAccountActivity extends Activity implements
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.activity_create_account);
 
-	IList theList = Singleton.getInstance().getList();
-	myPresenter = new CreateAccountPresenter(this, theList);
+	myPresenter = new CreateAccountPresenter();
 
 	mdisplayName = (EditText) findViewById(R.id.editText1);
 	mdisplayName.setText(displayName);
@@ -107,6 +106,10 @@ public class CreateAccountActivity extends Activity implements
 
 	if (TextUtils.isEmpty(displayName)) {
 	    mdisplayName.setError(getString(R.string.error_field_required));
+	    focusView = mdisplayName;
+	    cancel = true;
+	} else if (myPresenter.checkDisplayName(displayName)) {
+	    mdisplayName.setError(getString(R.string.error_already_exists));
 	    focusView = mdisplayName;
 	    cancel = true;
 	}

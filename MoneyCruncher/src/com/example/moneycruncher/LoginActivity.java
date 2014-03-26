@@ -82,8 +82,7 @@ public class LoginActivity extends Activity implements ILoginActivity {
 
 	setContentView(R.layout.activity_login);
 
-	IList theList = Singleton.getInstance().getList();
-	myPresenter = new LoginPresenter(this, theList);
+	myPresenter = new LoginPresenter();
 
 	// Set up the login form.
 	mEmail = getIntent().getStringExtra(EXTRA_EMAIL);
@@ -161,7 +160,7 @@ public class LoginActivity extends Activity implements ILoginActivity {
 	    mPasswordView.setError(getString(R.string.error_field_required));
 	    focusView = mPasswordView;
 	    cancel = true;
-	} else if (mPassword.length() > 0) {
+	} else if (mPassword.length() > 0 && !myPresenter.checkUser(mEmail)) {
 	    if (myPresenter.checkPassword(mPassword)) {
 		mPasswordView
 			.setError(getString(R.string.error_incorrect_password));

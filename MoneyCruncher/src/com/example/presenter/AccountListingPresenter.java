@@ -1,11 +1,14 @@
 package com.example.presenter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
-import com.example.memory.IList;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.example.memory.Singleton;
 import com.example.memory.Tab;
 import com.example.memory.User;
-import com.example.moneycruncher.IAccountActivity;
 
 /**
  * 
@@ -16,19 +19,14 @@ public class AccountListingPresenter extends Presenter {
     /**
      * 
      */
-    private final IAccountActivity myActivity;
-    /**
-     * 
-     */
-    private final IList myList;
+    private Singleton facade;
 
     /**
      * @param activity 
      * @param list 
      */
-    public AccountListingPresenter(IAccountActivity activity, IList list) {
-	myActivity = activity;
-	myList = list;
+    public AccountListingPresenter() {
+        facade = Singleton.getInstance();
     }
 
     /**
@@ -36,13 +34,8 @@ public class AccountListingPresenter extends Presenter {
      * @param username 
      * @return User
      */
-    public User findUser(IList theList, String username) {
-	for (int n = 0; n < theList.getLength(); n++) {
-	    if (username.equals(theList.getUser(n).getName())) {
-		return theList.getUser(n);
-	    }
-	}
-	return null;
+    public User findUser(String username) {
+        return facade.findUser(username);
     }
 
     /**
@@ -57,5 +50,13 @@ public class AccountListingPresenter extends Presenter {
 	    }
 	}
 	return strList;
+    }
+
+    public void saveBinary() {
+        try {
+            facade.saveBinary();
+        } catch (IOException e) {
+            Log.e("ACCOUNT ACTIVITY", "error on closing save binary file");
+        }
     }
 }

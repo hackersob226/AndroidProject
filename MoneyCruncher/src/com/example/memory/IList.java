@@ -1,12 +1,13 @@
 package com.example.memory;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * @author
  * 
  */
-public interface IList {
+public interface IList extends Serializable{
     /**
      * @param n 
      */

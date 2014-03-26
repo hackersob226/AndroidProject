@@ -1,13 +1,14 @@
 package com.example.memory;
 
-import java.util.List;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * @author DCryts
  *
  */
-public class Tab {
+public class Tab implements Serializable{
+    private static final long serialVersionUID = 1L;
     /**
      * 
      */

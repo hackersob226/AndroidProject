@@ -1,10 +1,12 @@
 package com.example.moneycruncher;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,9 +14,8 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import com.example.memory.IList;
-import com.example.memory.Singleton;
 import com.example.memory.Tab;
 import com.example.memory.User;
 import com.example.presenter.AccountListingPresenter;
@@ -54,8 +55,7 @@ public class AccountActivity extends Activity implements IAccountActivity {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.activity_account);
 
-	IList theList = Singleton.getInstance().getList();
-	myPresenter = new AccountListingPresenter(this, theList);
+	myPresenter = new AccountListingPresenter();
 
 	String origin = getIntent().getExtras().getString("Uniqid");
 	if (origin.equals("From_Login_Activity")) {
@@ -65,7 +65,7 @@ public class AccountActivity extends Activity implements IAccountActivity {
 	listView = (ListView) findViewById(R.id.list);
 
 	ArrayList<Tab> accList = new ArrayList<Tab>();
-	theUser = myPresenter.findUser(theList, username);
+	theUser = myPresenter.findUser(username);
 	accList = theUser.getAccList();
 
 	String[] strList = myPresenter.fillStringList(accList);
@@ -139,6 +139,9 @@ public class AccountActivity extends Activity implements IAccountActivity {
 	// Handle item selection
 	switch (item.getItemId()) {
 	case 1:
+        myPresenter.saveBinary();
+        Toast.makeText(getApplicationContext(), "Saving...",
+                    Toast.LENGTH_LONG).show();
 	    Intent intent = new Intent(this, MainActivity.class);
 	    startActivity(intent);
 	    return true;
