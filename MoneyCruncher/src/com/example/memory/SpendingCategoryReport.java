@@ -3,19 +3,20 @@ package com.example.memory;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+/**
+ * @author Brandon, Trang, Chase, Katie, Devon
+ *
+ */
+
 public class SpendingCategoryReport extends Report{
-    /**
-     * 
-     */
     private Calendar startDate;
-    /**
-     * 
-     */
     private Calendar endDate;
+    
     /**
+     * Spending report extension of Report.
      * 
-     * @param startDate
-     * @param endDate
+     * @param startDate The start date of the report
+     * @param endDate The end date of the report
      */
     public SpendingCategoryReport(Calendar startDate, Calendar endDate) {
         super (startDate, endDate);
@@ -24,7 +25,8 @@ public class SpendingCategoryReport extends Report{
     }
 
     /**
-     * 
+     * @param user The User who owns the account report
+     * @return String[] A string list of report elements  
      */
     public String[] getDisplayList(User user){
         ArrayList<Tab> accList = user.getAccList();

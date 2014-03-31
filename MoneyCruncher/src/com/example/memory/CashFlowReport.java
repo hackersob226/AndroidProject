@@ -3,15 +3,30 @@ package com.example.memory;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+/**
+ * @author Brandon, Trang, Chase, Katie, Devon
+ *
+ */
 public class CashFlowReport extends Report{
     private Calendar startDate;
     private Calendar endDate;
+    
+    /**
+     * Cash flow extension of Report.
+     * 
+     * @param startDate The start date of the report
+     * @param endDate The end date of the report
+     */
     public CashFlowReport(Calendar startDate, Calendar endDate) {
         super(startDate, endDate);
         this.startDate = startDate;
         this.endDate = endDate;
     }
-
+    
+    /**
+     * @param user The User who owns the account report
+     * @return String[] A string list of report elements
+     */
     public String[] getDisplayList(User user) {
         ArrayList<Tab> accList = user.getAccList();
         double deposit = 0, withdraw = 0;
