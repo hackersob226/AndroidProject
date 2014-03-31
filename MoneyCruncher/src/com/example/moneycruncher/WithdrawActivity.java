@@ -82,7 +82,7 @@ public class WithdrawActivity extends Activity implements IWithdrawActivity {
 	username = extras.getString("USERNAME");
 	account = extras.getString("ACCOUNT");
 
-	currentAccount = myPresenter.getAccount(username, account);
+	currentAccount = myPresenter.getAccount(account);
 
 	mreason = (EditText) findViewById(R.id.editText1);
 	mreason.setText(reason);

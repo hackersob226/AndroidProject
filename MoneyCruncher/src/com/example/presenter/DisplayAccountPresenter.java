@@ -23,7 +23,7 @@ public class DisplayAccountPresenter extends Presenter {
         facade = Singleton.getInstance();
     }
 
-    public Tab getAccount(String username, String account) {
-        return facade.getAccount(username, account);
+    public Tab getAccount(String account) {
+        return facade.getAccount(account);
     }
 }

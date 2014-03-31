@@ -75,7 +75,7 @@ public class DisplayAccountActivity extends Activity implements
 	    account = extras.getString("ACCOUNT");
 	}
 
-	currentAccount = myPresenter.getAccount(username, account);
+	currentAccount = myPresenter.getAccount(account);
 
 	fullName = currentAccount.getFullName();
 	balance = String.valueOf(currentAccount.getbalance());

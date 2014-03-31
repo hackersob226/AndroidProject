@@ -53,12 +53,17 @@ public class Singleton {
 	return theList;
     }
 
-    public boolean verifyLogin(String mEmail) {
+    public User retrieveUser(int index) {
+        return theList.getUser(index);
+    }
+
+    public boolean verifyLogin(String username) {
         for (int i = 0; i < theList.getLength(); i++) {
-            if (mEmail.equals(theList.getUser(i).getName())) {
-            temp = theList.getUser(i);
+            String name = retrieveUser(i).getName();
+            if (username.equals(name)) {
+            temp = retrieveUser(i);
             i = theList.getLength();
-            } else if (!mEmail.equals(theList.getUser(i).getName())
+            } else if (!username.equals(name)
                 && theList.getLength() == 1) {
             return true;
             } else if (i == theList.getLength() - 1) {
@@ -68,16 +73,17 @@ public class Singleton {
         return false;
     }
 
-    public boolean verifyPass(String mPassword) {
-        if (!mPassword.equals(temp.getPass())) {
+    public boolean verifyPass(String password) {
+        if (!password.equals(temp.getPass())) {
             return true;
         }
         return false;
     }
 
-    public boolean verifyRegister(String mEmail) {
+    public boolean verifyRegister(String username) {
         for (int i = 0; i < theList.getLength(); i++) {
-            if (theList.getUser(i).getName().equals(mEmail)) {
+            String name = retrieveUser(i).getName();
+            if (name.equals(username)){
             return true;
             }
         }
@@ -90,8 +96,9 @@ public class Singleton {
 
     public User findUser(String username) {
         for (int n = 0; n < theList.getLength(); n++) {
-            if (username.equals(theList.getUser(n).getName())) {
-            return theList.getUser(n);
+            String name = retrieveUser(n).getName();
+            if (username.equals(name)) {
+            return retrieveUser(n);
             }
         }
         return null;
@@ -100,7 +107,8 @@ public class Singleton {
     public void createAccount(String user, String fullName, String displayName,
             String balance, String interest) {
         for (int i = 0; i < theList.getLength(); i++) {
-            if (theList.getUser(i).getName().equals(user)) {
+            String name = retrieveUser(i).getName();
+            if (name.equals(user)) {
             theList.getUser(i).addAccount(
                 new Tab(fullName, displayName, Double
                     .parseDouble(balance), Double
@@ -109,66 +117,70 @@ public class Singleton {
             }
     }
 
+    public ArrayList<Tab> retrieveAccList() {
+        return temp.getAccList();
+    }
+
+    public Tab retrieveTab(int index) {
+        return retrieveAccList().get(index);
+    }
+
     public boolean checkDisplayName(String name) {
-        for(int i = 0; i < temp.getAccList().size(); i++) {
-            if (temp.getAccList().get(i).getDisplayName().equals(name)) {
+        for(int i = 0; i < retrieveAccList().size(); i++) {
+            String displayName = retrieveTab(i).getDisplayName();
+            if (displayName.equals(name)) {
                 return true;
             }
         }
         return false;
     }
 
-    public Tab getAccount(String username, String account) {
-        ArrayList<Tab> tempAccList = new ArrayList<Tab>();
-        for (int n = 0; n < theList.getLength(); n++) {
-            if (theList.getUser(n).getName().equals(username)) {
-            tempAccList = theList.getUser(n).getAccList();
-            }
-        }
-        for (int i = 0; i < tempAccList.size(); i++) {
-            if (tempAccList.get(i).getDisplayName().equals(account)) {
-            return tempAccList.get(i);
+    public Tab getAccount(String account) {
+        for (int i = 0; i < retrieveAccList().size(); i++) {
+            String displayName = retrieveTab(i).getDisplayName();
+            if (displayName.equals(account)) {
+            return retrieveTab(i);
             }
         }
         return null;
     }
 
-    public void deposit(String name, int y, int m, int d, String amount,
+    public void deposit(String source, int y, int m, int d, String amount,
             Tab account) {
         double money = Double.parseDouble(amount);
         int accountLocation = 0, userLocation = 0;
-        ArrayList<Tab> tempAccList = new ArrayList<Tab>();
         for (int n = 0; n < theList.getLength(); n++) {
-            if (theList.getUser(n).getName().equals(temp.getName())) {
-            tempAccList = theList.getUser(n).getAccList();
+            String name = retrieveUser(n).getName();
+            if (name.equals(temp.getName())) {
             userLocation = n;
             }
         }
-        for (int i = 0; i < tempAccList.size(); i++) {
-            if (tempAccList.get(i).getDisplayName().equals(account)) {
+        for (int i = 0; i < retrieveAccList().size(); i++) {
+            String displayName = retrieveTab(i).getDisplayName();
+            if (displayName.equals(account)) {
             accountLocation = i;
             }
         }
-        theList.getUser(userLocation).getAccList().get(accountLocation).update(new Deposit(name, y, m, d, money));
+        theList.getUser(userLocation).getAccList().get(accountLocation).update(new Deposit(source, y, m, d, money));
     }
 
-    public void withdraw(String name, String category, int y, int m, int d,
+    public void withdraw(String reason, String category, int y, int m, int d,
             String amount, Tab account) {
         double money = Double.parseDouble(amount);
         int accountLocation = 0, userLocation = 0;
-        ArrayList<Tab> tempAccList = new ArrayList<Tab>();
         for (int n = 0; n < theList.getLength(); n++) {
-            if (theList.getUser(n).getName().equals(temp.getName())) {
-            tempAccList = theList.getUser(n).getAccList();
+            String name = retrieveUser(n).getName();
+            if (name.equals(temp.getName())) {
             userLocation = n;
             }
         }
-        for (int i = 0; i < tempAccList.size(); i++) {
-            if (tempAccList.get(i).getDisplayName().equals(account)) {
+        for (int i = 0; i < retrieveAccList().size(); i++) {
+            String displayName = retrieveTab(i).getDisplayName();
+            if (displayName.equals(account)) {
             accountLocation = i;
             }
         }
-        theList.getUser(userLocation).getAccList().get(accountLocation).update(new Withdrawal(name, category, y, m, d, money));
+        theList.getUser(userLocation).getAccList().get(accountLocation).update(new Withdrawal(reason, category, y, m, d, money));
     }
 
     public void saveBinary() throws IOException {

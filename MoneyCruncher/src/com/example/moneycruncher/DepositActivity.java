@@ -73,7 +73,7 @@ public class DepositActivity extends Activity implements IDepositActivity {
 	username = extras.getString("USERNAME");
 	account = extras.getString("ACCOUNT");
 
-	currentAccount = myPresenter.getAccount(username, account);
+	currentAccount = myPresenter.getAccount(account);
 
 	msource = (EditText) findViewById(R.id.editText1);
 	msource.setText(source);
