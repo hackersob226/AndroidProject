@@ -14,49 +14,55 @@ import android.os.Environment;
 import android.util.Log;
 
 /**
- * @author
- *
+ * @author Brandon, Trang, Chase, Katie, Devon
+ *  
  */
 public class Singleton {
-    /**
-     * 
-     */
     private static Singleton instance;
-    /**
-     * 
-     */
     private IList theList;
-
     private User temp;
-
-    /**
-     * 
-     */
+    
     private Singleton() {
-	theList = new UserList();
+    	theList = new UserList();
     }
 
     /**
+     * 
+     * 
      * @return Singleton
      */
     public static synchronized Singleton getInstance() {
-	if (instance == null) {
-	    instance = new Singleton();
-	}
+		if (instance == null) {
+		    instance = new Singleton();
+		}
 	return instance;
     }
 
     /**
-     * @return IList
+     * 
+     * 
+     * @return IList 
      */
     public IList getList() {
-	return theList;
+    	return theList;
     }
 
+    /**
+     * 
+     * 
+     * @param index 
+     * @return User 
+     */
     public User retrieveUser(int index) {
         return theList.getUser(index);
     }
 
+    /**
+     * 
+     * 
+     * @param username 
+     * @return boolean 
+     */
     public boolean verifyLogin(String username) {
         for (int i = 0; i < theList.getLength(); i++) {
             String name = retrieveUser(i).getName();
@@ -73,6 +79,12 @@ public class Singleton {
         return false;
     }
 
+    /**
+     * 
+     * 
+     * @param password 
+     * @return boolean 
+     */
     public boolean verifyPass(String password) {
         if (!password.equals(temp.getPass())) {
             return true;
@@ -80,6 +92,12 @@ public class Singleton {
         return false;
     }
 
+    /**
+     * 
+     * 
+     * @param username
+     * @return boolean 
+     */
     public boolean verifyRegister(String username) {
         for (int i = 0; i < theList.getLength(); i++) {
             String name = retrieveUser(i).getName();
@@ -90,10 +108,21 @@ public class Singleton {
         return false;
     }
 
+    /**
+     * 
+     * 
+     * @param pass 
+     */
     public void register(String user, String pass) {
         theList.add(new User(user, pass));
     }
 
+    /**
+     * 
+     * 
+     * @param username 
+     * @return User 
+     */
     public User findUser(String username) {
         for (int n = 0; n < theList.getLength(); n++) {
             String name = retrieveUser(n).getName();
@@ -104,6 +133,15 @@ public class Singleton {
         return null;
     }
 
+    /**
+     * 
+     * 
+     * @param user 
+     * @param fullName 
+     * @param displayName 
+     * @param balance 
+     * @param intereset 
+     */
     public void createAccount(String user, String fullName, String displayName,
             String balance, String interest) {
         for (int i = 0; i < theList.getLength(); i++) {
@@ -117,14 +155,31 @@ public class Singleton {
             }
     }
 
+    /**
+     * 
+     * 
+     * @return ArrayList<Tab> 
+     */
     public ArrayList<Tab> retrieveAccList() {
         return temp.getAccList();
     }
 
+    /**
+     * 
+     * 
+     * @param index 
+     * @return Tab 
+     */
     public Tab retrieveTab(int index) {
         return retrieveAccList().get(index);
     }
 
+    /**
+     * 
+     * 
+     * @param name 
+     * @return boolean 
+     */
     public boolean checkDisplayName(String name) {
         for(int i = 0; i < retrieveAccList().size(); i++) {
             String displayName = retrieveTab(i).getDisplayName();
@@ -135,6 +190,12 @@ public class Singleton {
         return false;
     }
 
+    /**
+     * 
+     * 
+     * @param account
+     * @return Tab 
+     */
     public Tab getAccount(String account) {
         for (int i = 0; i < retrieveAccList().size(); i++) {
             String displayName = retrieveTab(i).getDisplayName();
@@ -145,6 +206,16 @@ public class Singleton {
         return null;
     }
 
+    /**
+     * 
+     * 
+     * @param source 
+     * @param y 
+     * @param m 
+     * @param d 
+     * @param amount 
+     * @param account 
+     */
     public void deposit(String source, int y, int m, int d, String amount,
             Tab account) {
         double money = Double.parseDouble(amount);
@@ -164,6 +235,17 @@ public class Singleton {
         theList.getUser(userLocation).getAccList().get(accountLocation).update(new Deposit(source, y, m, d, money));
     }
 
+    /**
+     * 
+     * 
+     * @param reason 
+     * @param category 
+     * @param y 
+     * @param m 
+     * @param d 
+     * @param amount 
+     * @param account 
+     */
     public void withdraw(String reason, String category, int y, int m, int d,
             String amount, Tab account) {
         double money = Double.parseDouble(amount);
@@ -183,6 +265,9 @@ public class Singleton {
         theList.getUser(userLocation).getAccList().get(accountLocation).update(new Withdrawal(reason, category, y, m, d, money));
     }
 
+    /**
+     * 
+     */
     public void saveBinary() throws IOException {
         ObjectOutputStream oos = null;
         try {
@@ -199,6 +284,9 @@ public class Singleton {
         }
     }
 
+    /**
+     * 
+     */
     public void loadBinary() throws IOException {
         ObjectInputStream oos = null;
         try {

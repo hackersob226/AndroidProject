@@ -4,34 +4,34 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * @author
+ * @author Brandon, Trang, Chase, Katie, Devon
  * 
  */
 public interface IList extends Serializable{
     /**
-     * @param n 
+     * @param n The User to be added
      */
     void add(User n);
 
     /**
-     * @param n 
-     * @return User
+     * @param n The index of the requested user
+     * @return User The User requested
      */
     User getUser(int n);
 
     /**
-     * @param n 
-     * @return boolean
+     * @param n The user in question
+     * @return boolean Whether or not the given User is in the list
      */
     boolean contains(User n);
 
     /**
-     * @return int
+     * @return int The length of the list
      */
     int getLength();
 
     /**
-     * @return ArrayList<User>
+     * @return ArrayList<User> An instance of the list
      */
     ArrayList<User> getList();
 }
