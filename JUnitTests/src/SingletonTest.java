@@ -21,5 +21,11 @@ public class SingletonTest extends TestCase {
         
         assertEquals("user1AccFN", instance.getAccount("user1AccDN").getFullName());
     }
+    
+    public void testFindUser() {
+    	assertNull(instance.findUser(null));
+    	assertNull(instance.findUser("NotaUser"));
+    	assertEquals(instance.retrieveUser(1), instance.findUser("user1"));
+    }
 
 }

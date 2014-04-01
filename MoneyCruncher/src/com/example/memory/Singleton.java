@@ -124,12 +124,14 @@ public class Singleton {
      * @return User 
      */
     public User findUser(String username) {
-        for (int n = 0; n < theList.getLength(); n++) {
-            String name = retrieveUser(n).getName();
-            if (username.equals(name)) {
-            return retrieveUser(n);
+    	if (username != null) {
+    		for (int n = 0; n < theList.getLength(); n++) {
+                String name = retrieveUser(n).getName();
+                if (username.equals(name)) {
+                return retrieveUser(n);
+                }
             }
-        }
+    	}
         return null;
     }
 
