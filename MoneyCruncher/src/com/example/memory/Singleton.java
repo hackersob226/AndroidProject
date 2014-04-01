@@ -161,7 +161,10 @@ public class Singleton {
      * @return ArrayList<Tab> 
      */
     public ArrayList<Tab> retrieveAccList() {
+        if(temp != null) {
         return temp.getAccList();
+        }
+        return null;
     }
 
     /**
