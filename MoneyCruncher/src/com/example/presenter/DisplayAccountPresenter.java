@@ -1,28 +1,31 @@
 package com.example.presenter;
 
-import com.example.memory.IList;
 import com.example.memory.Singleton;
 import com.example.memory.Tab;
-import com.example.moneycruncher.IDisplayAccountActivity;
 
 /**
- * @author 
+ * 
+ * @author Trang, Brandon, Chase, Devon, Katie
  *
  */
 public class DisplayAccountPresenter extends Presenter {
     /**
-     * 
+     * The Singleton class used to do actions in the Presenter.
      */
     private Singleton facade;
 
     /**
-     * @param activity 
-     * @param list 
+     * Constructs a DisplayAccountPresenter by getting the instance of
+     * the Singleton.
      */
     public DisplayAccountPresenter() {
         facade = Singleton.getInstance();
     }
-
+    /**
+     * Finds an account in the Singleton and returns that Tab.
+     * @param account The String of the account's name to be gotten.
+     * @return The Tab with the given account name
+     */
     public Tab getAccount(String account) {
         return facade.getAccount(account);
     }

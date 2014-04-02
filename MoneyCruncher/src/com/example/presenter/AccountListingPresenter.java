@@ -4,14 +4,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.memory.Singleton;
 import com.example.memory.Tab;
 import com.example.memory.User;
 
 /**
- * 
+ * Presents the Accounts in a list!
  * @author 
  *
  */
@@ -22,25 +21,27 @@ public class AccountListingPresenter extends Presenter {
     private Singleton facade;
 
     /**
-     * @param activity 
-     * @param list 
+     * Constructs an AccountListingPresenter using an instance of
+     * the Singleton.
      */
     public AccountListingPresenter() {
         facade = Singleton.getInstance();
     }
 
     /**
-     * @param theList 
-     * @param username 
-     * @return User
+     * Finds the user in the Singleton using the username.
+     * @param username The user's name
+     * @return User the User if found in Singleton, null if not found
      */
     public User findUser(String username) {
         return facade.findUser(username);
     }
 
     /**
-     * @param accList 
-     * @return String[]
+     * Fills a String array with display names of all the 
+     * accounts for this user.
+     * @param accList the list of accounts
+     * @return A String array of account display names
      */
     public String[] fillStringList(ArrayList<Tab> accList) {
 	String[] strList = new String[accList.size()];
@@ -51,7 +52,9 @@ public class AccountListingPresenter extends Presenter {
 	}
 	return strList;
     }
-
+    /**
+     * 
+     */
     public void saveBinary() {
         try {
             facade.saveBinary();
