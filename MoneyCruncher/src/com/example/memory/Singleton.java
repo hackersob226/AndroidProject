@@ -27,9 +27,9 @@ public class Singleton {
     }
 
     /**
+     * Returns the static instance of Singleton
      * 
-     * 
-     * @return Singleton
+     * @return Singleton The static instance of this class
      */
     public static synchronized Singleton getInstance() {
 		if (instance == null) {
@@ -39,51 +39,51 @@ public class Singleton {
     }
 
     /**
+     * Returns the user list.
      * 
-     * 
-     * @return IList 
+     * @return IList The user list 
      */
     public IList getList() {
     	return theList;
     }
 
     /**
+     * Returns the specified user from the User list.
      * 
-     * 
-     * @param index 
-     * @return User 
+     * @param index User number
+     * @return User The requested User
      */
     public User retrieveUser(int index) {
         return theList.getUser(index);
     }
 
     /**
+     * Checks if the username isn't already taken in the user list
      * 
-     * 
-     * @param username 
-     * @return boolean 
+     * @param username Name of the User in question 
+     * @return boolean Returns true if username isn't in user list, returns false otherwise
      */
     public boolean verifyLogin(String username) {
         for (int i = 0; i < theList.getLength(); i++) {
             String name = retrieveUser(i).getName();
             if (username.equals(name)) {
-            temp = retrieveUser(i);
-            i = theList.getLength();
+                temp = retrieveUser(i);
+                i = theList.getLength();
             } else if (!username.equals(name)
                 && theList.getLength() == 1) {
-            return true;
+                return true;
             } else if (i == theList.getLength() - 1) {
-            return true;
+                return true;
             }
         }
         return false;
     }
 
     /**
+     * Checks if the password is correct
      * 
-     * 
-     * @param password 
-     * @return boolean 
+     * @param password The inputted password
+     * @return boolean Returns true if password is correct, false otherwise
      */
     public boolean verifyPass(String password) {
         if (!password.equals(temp.getPass())) {
@@ -93,35 +93,37 @@ public class Singleton {
     }
 
     /**
+     * Checks if the User list contains the given username
      * 
-     * 
-     * @param username
-     * @return boolean 
+     * @param username The username in question
+     * @return boolean Returns ture if there is a registered user
+     *  with the given username, returns false otherwise
      */
     public boolean verifyRegister(String username) {
         for (int i = 0; i < theList.getLength(); i++) {
             String name = retrieveUser(i).getName();
             if (name.equals(username)){
-            return true;
+                return true;
             }
         }
         return false;
     }
 
     /**
+     * Adds a new user to the user list with the given name and password
      * 
-     * 
-     * @param pass 
+     * @param user The new user's name
+     * @param pass The new user's password
      */
     public void register(String user, String pass) {
         theList.add(new User(user, pass));
     }
 
     /**
+     * Returns the User with the given name
      * 
-     * 
-     * @param username 
-     * @return User 
+     * @param username The name of the user in question
+     * @return User The user with the given username
      */
     public User findUser(String username) {
     	if (username != null) {
@@ -136,13 +138,13 @@ public class Singleton {
     }
 
     /**
+     * Creates a new account for the given user with the given attributes
      * 
-     * 
-     * @param user 
-     * @param fullName 
-     * @param displayName 
-     * @param balance 
-     * @param intereset 
+     * @param user The user whom the account is owned by
+     * @param fullName The full name of the account
+     * @param displayName The display name of the account
+     * @param balance The balance of the account
+     * @param intereset The monthly interest rate of the account
      */
     public void createAccount(String user, String fullName, String displayName,
             String balance, String interest) {
@@ -158,32 +160,33 @@ public class Singleton {
     }
 
     /**
+     * Returns the account list of the current user
      * 
-     * 
-     * @return ArrayList<Tab> 
+     * @return ArrayList<Tab> The account list of the current user
      */
     public ArrayList<Tab> retrieveAccList() {
         if(temp != null) {
-        return temp.getAccList();
+            return temp.getAccList();
         }
         return null;
     }
 
     /**
+     * Returns the account at the given index
      * 
-     * 
-     * @param index 
-     * @return Tab 
+     * @param index The index of the account in question
+     * @return Tab The account at the given index
      */
     public Tab retrieveTab(int index) {
         return retrieveAccList().get(index);
     }
 
     /**
+     * Checks if the current use has an account with the given display name
      * 
-     * 
-     * @param name 
-     * @return boolean 
+     * @param name The display name to check for
+     * @return boolean Returns true if the current use does have
+     *  an account of the given name, otherwise false
      */
     public boolean checkDisplayName(String name) {
         for(int i = 0; i < retrieveAccList().size(); i++) {
@@ -196,30 +199,30 @@ public class Singleton {
     }
 
     /**
+     * Returns the account with the given display
      * 
-     * 
-     * @param account
-     * @return Tab 
+     * @param account The display name of the account in question 
+     * @return Tab The account with the given display name
      */
     public Tab getAccount(String account) {
         for (int i = 0; i < retrieveAccList().size(); i++) {
             String displayName = retrieveTab(i).getDisplayName();
             if (displayName.equals(account)) {
-            return retrieveTab(i);
+                return retrieveTab(i);
             }
         }
         return null;
     }
 
     /**
+     * Updates the given account with a deposit of the given parameters
      * 
-     * 
-     * @param source 
-     * @param y 
-     * @param m 
-     * @param d 
-     * @param amount 
-     * @param account 
+     * @param source The name of the deposit
+     * @param y Year of the deposit
+     * @param m Month of the deposit
+     * @param d Day of the deposit
+     * @param amount Amount of the deposit
+     * @param account The account which is being deposited to 
      */
     public void deposit(String source, int y, int m, int d, String amount,
             Tab account) {
@@ -228,28 +231,28 @@ public class Singleton {
         for (int n = 0; n < theList.getLength(); n++) {
             String name = retrieveUser(n).getName();
             if (name.equals(temp.getName())) {
-            userLocation = n;
+                userLocation = n;
             }
         }
         for (int i = 0; i < retrieveAccList().size(); i++) {
             String displayName = retrieveTab(i).getDisplayName();
             if (displayName.equals(account)) {
-            accountLocation = i;
+                accountLocation = i;
             }
         }
         theList.getUser(userLocation).getAccList().get(accountLocation).update(new Deposit(source, y, m, d, money));
     }
 
     /**
+     * Updates the given account with a withdrawal of the given parameters
      * 
-     * 
-     * @param reason 
-     * @param category 
-     * @param y 
-     * @param m 
-     * @param d 
-     * @param amount 
-     * @param account 
+     * @param reason The name of the withdrawal
+     * @param category The category of the withdrawal
+     * @param y The year of the withdrawal
+     * @param m The month of the withdrawal
+     * @param d The day of the withdrawal
+     * @param amount The amount of the withdrawal
+     * @param account The account which is being deposited to
      */
     public void withdraw(String reason, String category, int y, int m, int d,
             String amount, Tab account) {
@@ -271,7 +274,7 @@ public class Singleton {
     }
 
     /**
-     * 
+     * Saves the user list as a binary file to storage
      */
     public void saveBinary() throws IOException {
         ObjectOutputStream oos = null;
@@ -290,7 +293,7 @@ public class Singleton {
     }
 
     /**
-     * 
+     * Loads a binary file of the user list into memory
      */
     public void loadBinary() throws IOException {
         ObjectInputStream oos = null;
