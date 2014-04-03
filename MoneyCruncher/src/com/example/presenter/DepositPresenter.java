@@ -4,14 +4,13 @@ import com.example.memory.Singleton;
 import com.example.memory.Tab;
 
 /**
- * This is the presenter for a deposit. Adds the deposit to 
- * a Singleton to let it handle the information correctly.
+ * 
  * @author Trang, Brandon, Devon, Chase, Katie
  *
  */
 public class DepositPresenter extends Presenter {
     /**
-     * The Singleton that represents this user's info
+     * 
      */
     private Singleton facade;
 
@@ -43,9 +42,9 @@ public class DepositPresenter extends Presenter {
         facade.deposit(name, y, m , d, amount, account);
     }
     /**
-     * This checks to see if the number is a fair one to use.
-     * @param number The input number to be validated
-     * @return true if valid number, false if not
+     * 
+     * @param number
+     * @return true if, false if
      */
     public boolean checkNumber(String number) {
         if (number.substring(number.length() - 1).equals(("."))) {

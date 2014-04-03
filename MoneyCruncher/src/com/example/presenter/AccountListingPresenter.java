@@ -11,12 +11,12 @@ import com.example.memory.User;
 
 /**
  * Presents the Accounts in a list!
- * @author Brandon, Devon, Chase, Trang Katie
+ * @author 
  *
  */
 public class AccountListingPresenter extends Presenter {
     /**
-     * The Singleton object used to actually do work. 
+     * 
      */
     private Singleton facade;
 
@@ -53,7 +53,7 @@ public class AccountListingPresenter extends Presenter {
 	return strList;
     }
     /**
-     * Saves the information in the Singleton to the phone's memory.
+     * 
      */
     public void saveBinary() {
         try {
