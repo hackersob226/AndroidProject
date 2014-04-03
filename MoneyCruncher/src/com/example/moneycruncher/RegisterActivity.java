@@ -20,18 +20,19 @@ import android.widget.Toast;
 import com.example.presenter.RegisterPresenter;
 
 /**
- * Activity which displays a login screen to the user, offering registration as
- * well.
+ * Activity which displays a register screen to the user.
+ * 
+ * @author Katie, Devon, Brandon, Chase, Trang
  */
 public class RegisterActivity extends Activity {
 
     /**
-     * 
+     * The presenter for the RegisterActivity.
      */
     private RegisterPresenter myPresenter;
 
     /**
-     * The default email to populate the email field with.
+     * The default email/username to populate the email field with.
      */
     public static final String EXTRA_EMAIL = "com.example.android.authenticatordemo.extra.EMAIL";
 
@@ -40,23 +41,22 @@ public class RegisterActivity extends Activity {
      */
     private UserLoginTask mAuthTask = null;
 
-    // Values for email and password at the time of the login attempt.
     /**
-     * 
+     * Variable to store the username at the time of the login attempt.
      */
     private String mEmail;
     /**
-     * 
+     * Variable to store the password at the time of the login attempt.
      */
     private String mPassword;
 
     // UI references.
     /**
-     * 
+     * The text view for the username.
      */
     private EditText mEmailView;
     /**
-     * 
+     * The text view for the password.
      */
     private EditText mPasswordView;
     /**
@@ -72,6 +72,13 @@ public class RegisterActivity extends Activity {
      */
     private TextView mLoginStatusMessageView;
 
+    
+    /**
+     * Overridden method for Activity. All layout information is set up as soon as the
+     * activity is created.
+     *
+     * @param savedInstanceState Default saved instance state.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
@@ -112,6 +119,12 @@ public class RegisterActivity extends Activity {
 		});
     }
 
+    /**
+     * Setting for the built-in menu. 
+     *
+     * @param menu The default Menu.
+     * @return     Whether or not the Menu was successfully created.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 	super.onCreateOptionsMenu(menu);
@@ -120,9 +133,9 @@ public class RegisterActivity extends Activity {
     }
 
     /**
-     * Attempts to sign in or register the account specified by the login form.
-     * If there are form errors (invalid email, missing fields, etc.), the
-     * errors are presented and no actual login attempt is made.
+     * Attempts to register the account specified by the login form.
+     * If there are form errors (invalid username, missing fields, etc.), the
+     * errors are presented and no actual register attempt is made.
      */
     public void attemptLogin() {
 	if (mAuthTask != null) {

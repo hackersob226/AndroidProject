@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.memory.SpendingCategoryReport;
 import com.example.memory.User;
 import com.example.presenter.SpendingCategoryPresenter;
+
 /**
  * This class is the UI for displaying the Spending Category
  * Report for each account of a User.
@@ -83,6 +84,14 @@ public class SpendingCategoryReportActivity extends Activity {
     *
     */
     private String end = "";
+    
+    
+    /**
+     * Overridden method for Activity. All layout information is set up as soon as the
+     * activity is created.
+     *
+     * @param savedInstanceState Default saved instance state.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -149,6 +158,12 @@ public class SpendingCategoryReportActivity extends Activity {
         mtotal.setText(total);
     }
 
+    /**
+     * Setting for the built-in menu. 
+     *
+     * @param menu The default Menu.
+     * @return     Whether or not the Menu was successfully created.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

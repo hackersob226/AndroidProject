@@ -21,11 +21,13 @@ import com.example.presenter.LoginPresenter;
 /**
  * Activity which displays a login screen to the user, offering registration as
  * well.
+ * 
+ * @author Katie, Devon, Brandon, Chase, Trang
  */
 public class LoginActivity extends Activity {
 
     /**
-     * 
+     * The presenter for the LoginActivity.
      */
     private LoginPresenter myPresenter;
     /**
@@ -40,25 +42,24 @@ public class LoginActivity extends Activity {
      * Keep track of the login task to ensure we can cancel it if requested.
      */
     private UserLoginTask mAuthTask = null;
-
-    // Values for email and password at the time of the login attempt.
+ 
     /**
-     * 
+     * Variable for the username at the time of the login attempt.
      */
     private String mEmail;
     /**
-     * 
+     * Variable for the password at the time of the login attempt.
      */
     private String mPassword;
 
     // UI references. Email = Username, since by default the template wanted
     // Emails
     /**
-     * 
+     * The text view for the username.
      */
     private EditText mEmailView;
     /**
-     * 
+     * The text view for the password.
      */
     private EditText mPasswordView;
     /**
@@ -74,6 +75,12 @@ public class LoginActivity extends Activity {
      */
     private TextView mLoginStatusMessageView;
 
+    /**
+     * Overridden method for Activity. All layout information is set up as soon as the
+     * activity is created.
+     *
+     * @param savedInstanceState Default saved instance state.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
@@ -114,6 +121,12 @@ public class LoginActivity extends Activity {
 		});
     }
 
+    /**
+     * Setting for the built-in menu. 
+     *
+     * @param menu The default Menu.
+     * @return     Whether or not the Menu was successfully created.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 	super.onCreateOptionsMenu(menu);
@@ -122,8 +135,8 @@ public class LoginActivity extends Activity {
     }
 
     /**
-     * Attempts to sign in or register the account specified by the login form.
-     * If there are form errors (invalid email, missing fields, etc.), the
+     * Attempts to sign in the account specified by the login form.
+     * If there are form errors (invalid username, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
      */
     public void attemptLogin() {

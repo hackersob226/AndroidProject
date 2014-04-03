@@ -56,6 +56,13 @@ public class ReportActivity extends Activity {
    */
     private static final String ID = "Uniqid";
 
+    
+    /**
+     * Overridden method for Activity. All layout information is set up as soon as the
+     * activity is created.
+     *
+     * @param savedInstanceState Default saved instance state.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,6 +109,12 @@ public class ReportActivity extends Activity {
         spinner1.setOnItemSelectedListener(new CustomOnItemSelectedListener());
     }
 
+    /**
+     * Setting for the built-in menu. 
+     *
+     * @param menu The default Menu.
+     * @return     Whether or not the Menu was successfully created.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
