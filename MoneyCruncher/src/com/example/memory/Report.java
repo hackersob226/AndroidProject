@@ -6,9 +6,9 @@ import java.util.Calendar;
  * @author Brandon, Trang, Chase, Katie, Devon
  *
  */
-public class Report {
-    private Calendar startDate;
-    private Calendar endDate;
+public abstract class Report {
+    Calendar startDate;
+    Calendar endDate;
     
     /**
      * 
@@ -25,7 +25,5 @@ public class Report {
      * @param user The User who owns the account report
      * @return String[] A string list of report elements
      */
-    public String[] getDisplayList(User user) {
-        return new String[0];
-    }
+    public abstract String[] getDisplayList(User user);
 }

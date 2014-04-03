@@ -9,8 +9,6 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
-import com.example.memory.IList;
-import com.example.memory.Singleton;
 import com.example.memory.Tab;
 import com.example.presenter.DepositPresenter;
 

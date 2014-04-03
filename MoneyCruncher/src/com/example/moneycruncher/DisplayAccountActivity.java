@@ -7,8 +7,6 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.memory.IList;
-import com.example.memory.Singleton;
 import com.example.memory.Tab;
 import com.example.presenter.DisplayAccountPresenter;
 

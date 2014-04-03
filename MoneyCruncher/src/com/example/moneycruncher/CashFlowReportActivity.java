@@ -10,9 +10,7 @@ import android.view.Menu;
 import android.widget.TextView;
 
 import com.example.memory.CashFlowReport;
-import com.example.memory.IList;
 import com.example.memory.Report;
-import com.example.memory.Singleton;
 import com.example.memory.User;
 import com.example.presenter.CashFlowPresenter;
 /**

@@ -213,3 +213,5 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+MoneyCruncher/project.properties
+MoneyCruncher/gen/com/example/moneycruncher/BuildConfig.java

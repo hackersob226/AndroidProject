@@ -8,8 +8,6 @@ import java.util.Calendar;
  *
  */
 public class CashFlowReport extends Report{
-    private Calendar startDate;
-    private Calendar endDate;
     
     /**
      * Cash flow extension of Report.
@@ -19,8 +17,8 @@ public class CashFlowReport extends Report{
      */
     public CashFlowReport(Calendar startDate, Calendar endDate) {
         super(startDate, endDate);
-        this.startDate = startDate;
-        this.endDate = endDate;
+        super.startDate = startDate;
+        super.endDate = endDate;
     }
     
     /**

@@ -8,8 +8,6 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 
-import com.example.memory.IList;
-import com.example.memory.Singleton;
 import com.example.presenter.CreateAccountPresenter;
 
 /**

@@ -3,17 +3,13 @@ package com.example.moneycruncher;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.memory.IList;
 import com.example.memory.Report;
-import com.example.memory.Singleton;
 import com.example.memory.SpendingCategoryReport;
 import com.example.memory.User;
 import com.example.presenter.SpendingCategoryPresenter;

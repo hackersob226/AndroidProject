@@ -7,10 +7,7 @@ import java.util.Calendar;
  * @author Brandon, Trang, Chase, Katie, Devon
  *
  */
-
 public class SpendingCategoryReport extends Report{
-    private Calendar startDate;
-    private Calendar endDate;
     
     /**
      * Spending report extension of Report.
@@ -19,16 +16,16 @@ public class SpendingCategoryReport extends Report{
      * @param endDate The end date of the report
      */
     public SpendingCategoryReport(Calendar startDate, Calendar endDate) {
-        super (startDate, endDate);
-        this.startDate = startDate;
-        this.endDate = endDate;
+        super(startDate, endDate);
+        super.startDate = startDate;
+        super.endDate = endDate;
     }
 
     /**
      * @param user The User who owns the account report
      * @return String[] A string list of report elements  
      */
-    public String[] getDisplayList(User user){
+    public String[] getDisplayList(User user) {
         ArrayList<Tab> accList = user.getAccList();
         double rent = 0, food = 0, clothes = 0, entertainment = 0;
 

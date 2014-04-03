@@ -17,8 +17,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.memory.IList;
-import com.example.memory.Singleton;
 import com.example.presenter.RegisterPresenter;
 
 /**

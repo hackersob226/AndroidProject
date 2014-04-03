@@ -16,8 +16,6 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.memory.IList;
-import com.example.memory.Singleton;
 import com.example.presenter.LoginPresenter;
 
 /**

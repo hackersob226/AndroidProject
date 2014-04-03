@@ -10,8 +10,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.example.memory.IList;
-import com.example.memory.Singleton;
 import com.example.memory.Tab;
 import com.example.presenter.WithdrawPresenter;
 
