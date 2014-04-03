@@ -4,7 +4,8 @@ import com.example.memory.Singleton;
 
 
 /**
- * 
+ * This class presents for creating an account and handles 
+ * all the necessary actions involved in creating an account.
  * @author Brandon, Chase, Trang, Katie, Devon
  *
  */
@@ -35,9 +36,9 @@ public class CreateAccountPresenter extends Presenter {
         facade.createAccount(user, fullName, displayName, balance, interest);
     }
     /**
-     * 
-     * @param number
-     * @return true if, false if
+     * This checks to see if the number is a valid number to enter
+     * @param number The number being validated
+     * @return true if a valid number, false if not.
      */
     public boolean checkNumber(String number) {
         if (number.substring(number.length() - 1).equals(("."))) {
@@ -46,9 +47,9 @@ public class CreateAccountPresenter extends Presenter {
         return false;
     }
     /**
-     * 
-     * @param name 
-     * @return true if, false if
+     * This checks to see if the display name is a real display name
+     * @param name The Display Name
+     * @return true if a real display name, false if not
      */
     public boolean checkDisplayName(String name) {
         return facade.checkDisplayName(name);
