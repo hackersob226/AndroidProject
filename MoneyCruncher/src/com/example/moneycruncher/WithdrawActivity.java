@@ -19,7 +19,7 @@ import com.example.presenter.WithdrawPresenter;
  * @author 
  *
  */
-public class WithdrawActivity extends Activity implements IWithdrawActivity {
+public class WithdrawActivity extends Activity {
     /**
      * 
      */

@@ -4,7 +4,6 @@ import com.example.memory.IList;
 import com.example.memory.Singleton;
 import com.example.memory.Tab;
 import com.example.memory.Withdrawal;
-import com.example.moneycruncher.IWithdrawActivity;
 
 /**
  * @author 

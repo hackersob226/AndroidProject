@@ -25,7 +25,7 @@ import com.example.presenter.RegisterPresenter;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class RegisterActivity extends Activity implements IRegisterActivity {
+public class RegisterActivity extends Activity {
 
     /**
      * 

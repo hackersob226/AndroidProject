@@ -21,10 +21,13 @@ import com.example.memory.User;
 import com.example.presenter.AccountListingPresenter;
 
 /**
- * @author
- *
+ * This class is the UI for displaying the accounts a user has
+ * and allowing the accounts to be clickable in order to make a 
+ * transaction.
+ * 
+ * @author Katie, Devon, Brandon, Chase, Trang
  */
-public class AccountActivity extends Activity implements IAccountActivity {
+public class AccountActivity extends Activity {
     /**
      * 
      */
@@ -50,7 +53,12 @@ public class AccountActivity extends Activity implements IAccountActivity {
      */
     private AccountListingPresenter myPresenter;
 
-    @Override
+    /**
+     * Overridden method for Activity. All layout information is set up as soon as the
+     * activity is created.
+     *
+     * @param savedInstanceState Default saved instance state.
+     */
     protected void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.activity_account);
@@ -93,7 +101,9 @@ public class AccountActivity extends Activity implements IAccountActivity {
     }
 
     /** 
-     * @param strList 
+     * Displays the list of accounts onto the listView.
+     * 
+     * @param strList List of accounts in String form.
      */
     public void displayAccounts(String[] strList) {
 	// ADAPTER
@@ -103,7 +113,9 @@ public class AccountActivity extends Activity implements IAccountActivity {
     }
 
     /**
-     * @param view 
+     * Method to advance to the CreateAccountActivity if selected.
+     * 
+     * @param view The present View.
      */
     public void create(View view) {
 	Intent intent = new Intent(this, CreateAccountActivity.class);
@@ -112,7 +124,9 @@ public class AccountActivity extends Activity implements IAccountActivity {
     }
 
     /**
-     * @param view
+     * Method to advance to the ReportActivity if selected.
+     * 
+     * @param view The present View.
      */
     public void generate(View view) {
     if (theUser.getAccList().size() > 0) {
@@ -123,7 +137,11 @@ public class AccountActivity extends Activity implements IAccountActivity {
     }
     }
 
-    @Override
+    /**
+     * Setting for the built-in menu. 
+     *
+     * @param menu The default Menu.
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
 	// Inflate the menu; this adds items to the action bar if it is present.
 	menu.add(0, 1, 0, "Sign Out");
@@ -132,8 +150,10 @@ public class AccountActivity extends Activity implements IAccountActivity {
     }
 
     /** 
-     * @param item 
-     * @return boolean
+     * Creates functions for the buttons on the built-in menu.
+     * 
+     * @param item The selected MenuItem.
+     * @return Whether or not an item has been selected
      */
     public boolean onOptionsItemSelected(MenuItem item) {
 	// Handle item selection

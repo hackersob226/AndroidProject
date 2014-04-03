@@ -18,8 +18,7 @@ import com.example.memory.SpendingCategoryReport;
 import com.example.memory.User;
 import com.example.presenter.SpendingCategoryPresenter;
 
-public class SpendingCategoryReportActivity extends Activity implements 
-    ISpendingAccountReportActivity {
+public class SpendingCategoryReportActivity extends Activity {
 
     public static String username;
     public static User theUser;

@@ -11,17 +11,26 @@ public class SingletonTest extends TestCase {
         instance.register("user1", "pass1");
     }
 
+    /**
+     * @author Brandon
+     */
     public void testVerifyRegister() {
         assertTrue("Checking for a registered user", instance.verifyRegister("user1"));
         assertFalse("Checking for an unregistered user", instance.verifyRegister("user2"));
     }
 
+    /**
+     * @author Devon
+     */
     public void testCreateAccount() {
         instance.createAccount("user1", "user1AccFN", "user1AccDN", "10", "1.2");
         
         assertEquals("user1AccFN", instance.getAccount("user1AccDN").getFullName());
     }
     
+    /**
+     * @author Katie
+     */
     public void testFindUser() {
     	assertNull(instance.findUser(null));
     	assertNull(instance.findUser("NotaUser"));
