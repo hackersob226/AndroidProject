@@ -59,4 +59,15 @@ public class SingletonTest extends TestCase {
     	assertFalse("Check invalid password", instance.verifyLogin("Hermes"));
 
     }
+    
+    /**
+    * Assumes createAccount works.
+    *
+    * @author Chase
+    */
+    public void testCheckDisplayName() {
+        instance.createAccount("user1", "Full", "Display", "2.25", "0.2");
+        assertTrue(instance.checkDisplayName("Display"));
+        assertFlase(isntance.checkDisplayName("Banana"));
+    }
 }
