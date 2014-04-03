@@ -13,11 +13,11 @@ import com.example.memory.Tab;
 import com.example.presenter.DisplayAccountPresenter;
 
 /**
- * @author 
- *
+ * This class is the UI for display account information.
+ * 
+ * @author Katie, Devon, Brandon, Chase, Trang
  */
-public class DisplayAccountActivity extends Activity implements
-	IDisplayAccountActivity {
+public class DisplayAccountActivity extends Activity {
     /**
      * 
      */
@@ -61,7 +61,12 @@ public class DisplayAccountActivity extends Activity implements
      */
     private TextView minterest;
 
-    @Override
+    /**
+     * Overridden method for Activity. All layout information is set up as soon as the
+     * activity is created.
+     *
+     * @param savedInstanceState Default saved instance state.
+     */
     protected void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.activity_display_account);
@@ -93,9 +98,10 @@ public class DisplayAccountActivity extends Activity implements
 	minterest.setText(interest);
     }
 
-    /**
+    /** 
+     * Method that advances to the DepositActivity.
      * 
-     * @param view 
+     * @param view The default View.
      */
     public void deposit(View view) {
 	Intent intent = new Intent(this, DepositActivity.class);
@@ -106,9 +112,10 @@ public class DisplayAccountActivity extends Activity implements
 	startActivity(intent);
     }
 
-    /**
+    /** 
+     * Method that advances to the WithdrawActivity.
      * 
-     * @param view 
+     * @param view The default View.
      */
     public void withdraw(View view) {
 	Intent intent = new Intent(this, WithdrawActivity.class);
@@ -120,8 +127,9 @@ public class DisplayAccountActivity extends Activity implements
     }
 
     /** 
+     * Method that returns to the list of accounts/AccountActivity.
      * 
-     * @param view 
+     * @param view The default View.
      */
     public void back(View view) {
 	Intent intent = new Intent(this, AccountActivity.class);
@@ -129,7 +137,11 @@ public class DisplayAccountActivity extends Activity implements
 	startActivity(intent);
     }
 
-    @Override
+    /**
+     * Setting for the built-in menu. 
+     *
+     * @param menu The default Menu.
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
 	// Inflate the menu; this adds items to the action bar if it is present.
 	getMenuInflater().inflate(R.menu.display_account, menu);

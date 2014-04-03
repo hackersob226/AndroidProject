@@ -13,11 +13,12 @@ import com.example.memory.Singleton;
 import com.example.presenter.CreateAccountPresenter;
 
 /**
- * @author 
- *
+ * This class is the UI for displaying the Cash Flow of
+ * all accounts for a User.
+ * 
+ * @author Katie, Devon, Brandon, Chase, Trang
  */
-public class CreateAccountActivity extends Activity implements
-	ICreateAccountActivity {
+public class CreateAccountActivity extends Activity {
     /**
      * 
      */
@@ -65,7 +66,12 @@ public class CreateAccountActivity extends Activity implements
      */
     private boolean cancel;
 
-    @Override
+    /**
+     * Overridden method for Activity. All layout information is set up as soon as the
+     * activity is created.
+     *
+     * @param savedInstanceState Default saved instance state.
+     */
     protected void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.activity_create_account);
@@ -87,8 +93,11 @@ public class CreateAccountActivity extends Activity implements
 	user = getIntent().getStringExtra(AccountActivity.user);
     }
 
-    /** 
-     * @return boolean
+    /**
+     * Creates the layout to input account information. Also checks for
+     * incorrect input.
+     *
+     * @return Whether or not the attempted creation of the account is accepted.
      */
     public boolean attemptCreate() {
 	View focusView = null;
@@ -151,8 +160,9 @@ public class CreateAccountActivity extends Activity implements
     }
 
     /**
+     * Method to return back to the previous page.
      * 
-     * @param view 
+     * @param view The present View.
      */
     public void goBack(View view) {
 	boolean x = attemptCreate();
@@ -163,7 +173,11 @@ public class CreateAccountActivity extends Activity implements
 	}
     }
 
-    @Override
+    /**
+     * Setting for the built-in menu. 
+     *
+     * @param menu The default Menu.
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
 	// Inflate the menu; this adds items to the action bar if it is present.
 	getMenuInflater().inflate(R.menu.create_account, menu);

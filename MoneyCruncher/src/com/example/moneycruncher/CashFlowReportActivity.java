@@ -15,8 +15,13 @@ import com.example.memory.Report;
 import com.example.memory.Singleton;
 import com.example.memory.User;
 import com.example.presenter.CashFlowPresenter;
-
-public class CashFlowReportActivity extends Activity implements ICashFlowReportActivity{
+/**
+ * This class is the UI for displaying the Cash Flow of
+ * all accounts for a User.
+ * 
+ * @author Katie, Devon, Brandon, Chase, Trang
+ */
+public class CashFlowReportActivity extends Activity {
     private CashFlowPresenter myPresenter;
     private static String username;
     private static User theUser;
@@ -30,7 +35,12 @@ public class CashFlowReportActivity extends Activity implements ICashFlowReportA
     private TextView mexpenses;
     private TextView mtotal;
 
-    @Override
+    /**
+     * Overridden method for Activity. All layout information is set up as soon as the
+     * activity is created.
+     *
+     * @param savedInstanceState Default saved instance state.
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cash_flow_report);
@@ -49,6 +59,9 @@ public class CashFlowReportActivity extends Activity implements ICashFlowReportA
         display();
     }
 
+    /** 
+     * Displays the datePicker and textViews.
+     */
     public void display() {
         Calendar startDate = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
@@ -85,7 +98,11 @@ public class CashFlowReportActivity extends Activity implements ICashFlowReportA
             mtotal.setText(total);
     }
 
-    @Override
+    /**
+     * Setting for the built-in menu. 
+     *
+     * @param menu The default Menu.
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.cash_flow_report, menu);

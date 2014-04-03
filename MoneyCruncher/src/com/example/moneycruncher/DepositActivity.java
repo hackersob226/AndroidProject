@@ -15,10 +15,11 @@ import com.example.memory.Tab;
 import com.example.presenter.DepositPresenter;
 
 /**
- * @author 
- *
+ * This class is the UI for making a deposit.
+ * 
+ * @author Katie, Devon, Brandon, Chase, Trang
  */
-public class DepositActivity extends Activity implements IDepositActivity {
+public class DepositActivity extends Activity {
     /**
      * 
      */
@@ -62,7 +63,12 @@ public class DepositActivity extends Activity implements IDepositActivity {
      */
     private DatePicker datePicker;
 
-    @Override
+    /**
+     * Overridden method for Activity. All layout information is set up as soon as the
+     * activity is created.
+     *
+     * @param savedInstanceState Default saved instance state.
+     */
     protected void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.activity_deposit);
@@ -85,8 +91,10 @@ public class DepositActivity extends Activity implements IDepositActivity {
     }
 
     /**
-     * 
-     * @return boolean
+     * Creates the layout to input deposit information. Also checks for
+     * incorrect input.
+     *
+     * @return Whether or not the attempted creation of the transaction is accepted.
      */
     public boolean attemptCreate() {
 	View focusView = null;
@@ -129,8 +137,9 @@ public class DepositActivity extends Activity implements IDepositActivity {
     }
 
     /** 
+     * Method that advances to the DisplayAccountActivity. Transaction made.
      * 
-     * @param view 
+     * @param view The default View.
      */
     public void advance(View view) {
 	boolean x = attemptCreate();
@@ -142,8 +151,9 @@ public class DepositActivity extends Activity implements IDepositActivity {
     }
 
     /** 
+     * Method that returns to DisplayAccountActivity. Transaction not made.
      * 
-     * @param view 
+     * @param view The default View.
      */
     public void back(View view) {
 	Intent intent = new Intent(this, DisplayAccountActivity.class);
@@ -151,7 +161,11 @@ public class DepositActivity extends Activity implements IDepositActivity {
 	startActivity(intent);
     }
 
-    @Override
+    /**
+     * Setting for the built-in menu. 
+     *
+     * @param menu The default Menu.
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
 	// Inflate the menu; this adds items to the action bar if it is present.
 	getMenuInflater().inflate(R.menu.deposit, menu);

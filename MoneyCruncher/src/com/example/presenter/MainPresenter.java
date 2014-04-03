@@ -8,17 +8,21 @@ import com.example.memory.Singleton;
 
 public class MainPresenter extends Presenter {
     /**
-     * 
+     * The Singleton presents the user's information
      */
     private Singleton facade;
 
     /**
-     * @param activity 
-     * @param list 
+     * Construct a MainPresenter by using an instance
+     * of the Singleton 
      */
     public MainPresenter() {
         facade = Singleton.getInstance();
     }
+    
+    /**
+     * Load the information in the Singleton from the phone's memory.
+     */
 
     public void loadBinary() {
         try {
