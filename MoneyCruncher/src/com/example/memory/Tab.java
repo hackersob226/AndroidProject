@@ -39,8 +39,8 @@ public class Tab implements Serializable {
      * @param bal The current balance of the account
      * @param monthlyInterest The monthly interest rate of the account
      */
-    public Tab(final String full, final String display, final double bal,
-	    final double monthlyInterest) {
+    public Tab(String full, String display, double bal,
+	    double monthlyInterest) {
         fullName = full;
         displayName = display;
         balance = bal;
@@ -53,7 +53,7 @@ public class Tab implements Serializable {
      *
      * @param t the transaction to update the balance and history with
      */
-    public final void update(final Transaction t) {
+    public void update(Transaction t) {
         balance += t.getAmount();
         history.add(t);
     }
@@ -61,28 +61,28 @@ public class Tab implements Serializable {
     /**
      * @return String The full name of the account
      */
-    public final String getFullName() {
+    public String getFullName() {
     	return fullName;
     }
 
     /**
      * @return String The display name of the account
      */
-    public final String getDisplayName() {
+    public String getDisplayName() {
     	return displayName;
     }
 
     /**
      * @return double The current balance of the account
      */
-    public final double getbalance() {
+    public double getbalance() {
     	return balance;
     }
 
     /**
      * @return double The monthly interest rate of the account
      */
-    public final double getMIR() {
+    public double getMIR() {
     	return monthlyInterestRate;
     }
 
@@ -90,12 +90,12 @@ public class Tab implements Serializable {
      * @return List<Transaction> The list of Transactions representing
      * the history of the account
      */
-    public final ArrayList<Transaction> getHistory() {
+    public ArrayList<Transaction> getHistory() {
     	return history;
     }
 
     @Override
-    public final String toString() {
+    public String toString() {
         String comma = ", ";
         return fullName + comma + displayName + comma + balance + comma
 		+ monthlyInterestRate;

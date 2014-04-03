@@ -85,10 +85,10 @@ public class DisplayAccountActivity extends Activity {
 	myPresenter = new DisplayAccountPresenter();
 
 	Bundle extras = getIntent().getExtras();
-	String origin = extras.getString("ID");
+	String origin = extras.getString(ID);
 	if (origin.equals("From_Account_Activity")) {
-	    username = extras.getString("USER");
-	    account = extras.getString("ACC");
+	    username = extras.getString(USER);
+	    account = extras.getString(ACC);
 	}
 
 	currentAccount = myPresenter.getAccount(account);

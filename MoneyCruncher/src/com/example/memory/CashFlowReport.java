@@ -27,7 +27,7 @@ public class CashFlowReport extends AbstractReport {
      * @param start The start date of the report
      * @param end The end date of the report
      */
-    public CashFlowReport(Calendar start, final Calendar end) {
+    public CashFlowReport(Calendar start, Calendar end) {
         startDate = start;
         endDate = end;
     }
@@ -36,7 +36,7 @@ public class CashFlowReport extends AbstractReport {
      * @param user The User who owns the account report
      * @return String[] A string list of report elements
      */
-    public String[] getDisplayList(final User user) {
+    public String[] getDisplayList(User user) {
         ArrayList<Tab> accList = user.getAccList();
         double deposit = 0;
         double withdraw = 0;
