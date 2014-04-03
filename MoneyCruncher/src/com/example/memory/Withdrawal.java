@@ -7,6 +7,10 @@ import java.util.GregorianCalendar;
  *
  */
 public class Withdrawal extends Transaction {
+    /**
+     * Auto-generated ID
+     */
+    private static final long serialVersionUID = 6541282154381683811L;
     private String category;
 
     /**

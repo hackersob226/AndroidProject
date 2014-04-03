@@ -9,6 +9,11 @@ import java.util.GregorianCalendar;
 public class Deposit extends Transaction {
 
     /**
+     * Auto-generated ID
+     */
+    private static final long serialVersionUID = 24409515908116557L;
+
+    /**
      * Represents a deposit on an account.
      * 
      * @param name The name of this Transaction
