@@ -34,12 +34,12 @@
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:background="@drawable/bg3" >
 
         <LinearLayout
             style="@style/LoginFormContainer"
-            android:orientation="vertical" 
-            android:background="@drawable/bg2" >
+            android:orientation="vertical" >
 
             <EditText
                 android:id="@+id/email"
