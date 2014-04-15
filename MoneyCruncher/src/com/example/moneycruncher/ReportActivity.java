@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 /**
  * This class is the UI for choosing the parameters for generating
@@ -129,6 +130,10 @@ public class ReportActivity extends Activity {
     */
     public void advance(View view) {
         boolean flag = attemptAdvance();
+        if (!flag) {
+            Toast.makeText(getApplicationContext(), "Invalid Timeframe",
+                    Toast.LENGTH_LONG).show();
+        }
         String report = String.valueOf(spinner1.getSelectedItem());
         Bundle extras = new Bundle();
         extras.putString(ID, ORIGIN);

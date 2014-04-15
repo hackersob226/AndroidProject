@@ -39,7 +39,8 @@
 
         <LinearLayout
             style="@style/LoginFormContainer"
-            android:orientation="vertical" >
+            android:orientation="vertical" 
+            android:background="@drawable/bg3" >
 
             <EditText
                 android:id="@+id/email"

@@ -16,7 +16,7 @@
     <string name="prompt_balance">Balance</string>
     <string name="prompt_interest">Interest</string>
     <string name="prompt_source">Source</string>
-    <string name="prompt_date">Select Start Date and End Date</string>
+    <string name="prompt_date1">Select Start Date and End Date below</string>
     <string name="prompt_amount">Amount</string>
     <string name="prompt_reason">Reason</string>
     <string name="prompt_category">Category</string>
@@ -42,6 +42,7 @@
     <string name="income">Income</string>
     <string name="expenses">Expenses</string>
     <string name="category_prompt">Choose a category</string>
+    <string name="info">Click an account to get started</string>
 
     <string-array name="category_arrays">
         <item>Rent</item>

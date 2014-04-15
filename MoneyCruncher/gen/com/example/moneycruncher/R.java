@@ -27,8 +27,20 @@ public final class R {
         public static final int font_size=0x7f040002;
     }
     public static final class drawable {
-        public static final int bg=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
+        public static final int bg1=0x7f020000;
+        public static final int bg10=0x7f020001;
+        public static final int bg11=0x7f020002;
+        public static final int bg2=0x7f020003;
+        public static final int bg3=0x7f020004;
+        public static final int bg4=0x7f020005;
+        public static final int bg5=0x7f020006;
+        public static final int bg6=0x7f020007;
+        public static final int bg7=0x7f020008;
+        public static final int bg8=0x7f020009;
+        public static final int bg9=0x7f02000a;
+        public static final int ic_launcher=0x7f02000b;
+        public static final int mc_launcher=0x7f02000c;
+        public static final int mtc_launcher=0x7f02000d;
     }
     public static final class id {
         public static final int action_forgot_password=0x7f090023;
@@ -56,10 +68,10 @@ public final class R {
         public static final int tempView3=0x7f090013;
         public static final int tempView4=0x7f090014;
         public static final int tempView5=0x7f090011;
-        public static final int textView1=0x7f090004;
+        public static final int textView1=0x7f090003;
         public static final int textView10=0x7f090020;
         public static final int textView11=0x7f090021;
-        public static final int textView2=0x7f090003;
+        public static final int textView2=0x7f090004;
         public static final int textView3=0x7f090005;
         public static final int textView4=0x7f090006;
         public static final int textView5=0x7f090007;
@@ -97,17 +109,17 @@ public final class R {
         public static final int withdraw=0x7f08000c;
     }
     public static final class string {
-        public static final int action_forgot_password=0x7f05002f;
-        public static final int action_register=0x7f05003c;
+        public static final int action_forgot_password=0x7f050030;
+        public static final int action_register=0x7f05003d;
         public static final int action_settings=0x7f050001;
-        public static final int action_short=0x7f05003d;
-        public static final int action_sign_in_register=0x7f05002d;
-        public static final int action_sign_in_short=0x7f05002e;
+        public static final int action_short=0x7f05003e;
+        public static final int action_sign_in_register=0x7f05002e;
+        public static final int action_sign_in_short=0x7f05002f;
         public static final int app_name=0x7f050000;
         /**  Strings related to login 
          */
-        public static final int ask_email=0x7f05003a;
-        public static final int ask_password=0x7f05003b;
+        public static final int ask_email=0x7f05003b;
+        public static final int ask_password=0x7f05003c;
         public static final int back=0x7f050019;
         public static final int balance=0x7f050014;
         public static final int button_login=0x7f050004;
@@ -118,37 +130,38 @@ public final class R {
         public static final int deposit=0x7f050016;
         public static final int done=0x7f050018;
         public static final int entertainment=0x7f050024;
-        public static final int error_already_exists=0x7f050036;
-        public static final int error_field_required=0x7f050035;
-        public static final int error_incorrect_password=0x7f050034;
-        public static final int error_insufficient_funds=0x7f050038;
-        public static final int error_invalid_email=0x7f050031;
-        public static final int error_invalid_input=0x7f050037;
-        public static final int error_invalid_mamail=0x7f050032;
-        public static final int error_invalid_password=0x7f050033;
+        public static final int error_already_exists=0x7f050037;
+        public static final int error_field_required=0x7f050036;
+        public static final int error_incorrect_password=0x7f050035;
+        public static final int error_insufficient_funds=0x7f050039;
+        public static final int error_invalid_email=0x7f050032;
+        public static final int error_invalid_input=0x7f050038;
+        public static final int error_invalid_mamail=0x7f050033;
+        public static final int error_invalid_password=0x7f050034;
         public static final int expenses=0x7f050027;
         public static final int food=0x7f050022;
         public static final int generate_reports=0x7f05001d;
         public static final int hello_world=0x7f050002;
         public static final int income=0x7f050026;
+        public static final int info=0x7f050029;
         public static final int interest=0x7f050015;
-        public static final int login_progress=0x7f05003e;
-        public static final int login_progress_signing_in=0x7f050030;
+        public static final int login_progress=0x7f05003f;
+        public static final int login_progress_signing_in=0x7f050031;
         public static final int prompt_amount=0x7f050010;
         public static final int prompt_balance=0x7f05000c;
         public static final int prompt_category=0x7f050012;
-        public static final int prompt_date=0x7f05000f;
+        public static final int prompt_date1=0x7f05000f;
         public static final int prompt_displayname=0x7f05000b;
         /**  Strings related to login 
          */
-        public static final int prompt_email=0x7f05002b;
+        public static final int prompt_email=0x7f05002c;
         public static final int prompt_fullname=0x7f05000a;
         public static final int prompt_interest=0x7f05000d;
-        public static final int prompt_password=0x7f05002c;
+        public static final int prompt_password=0x7f05002d;
         public static final int prompt_reason=0x7f050011;
         public static final int prompt_source=0x7f05000e;
         public static final int rent=0x7f050021;
-        public static final int report_prompt=0x7f050029;
+        public static final int report_prompt=0x7f05002a;
         public static final int submit=0x7f05001a;
         public static final int success=0x7f050003;
         public static final int title_activity_account=0x7f050006;
@@ -156,8 +169,8 @@ public final class R {
         public static final int title_activity_create_account=0x7f050008;
         public static final int title_activity_deposit=0x7f05001b;
         public static final int title_activity_display_account=0x7f050013;
-        public static final int title_activity_login=0x7f05002a;
-        public static final int title_activity_register=0x7f050039;
+        public static final int title_activity_login=0x7f05002b;
+        public static final int title_activity_register=0x7f05003a;
         public static final int title_activity_report=0x7f05001e;
         public static final int title_activity_spending_category_report=0x7f05001f;
         public static final int title_activity_withdraw=0x7f05001c;
